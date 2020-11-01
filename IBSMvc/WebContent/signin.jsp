@@ -31,9 +31,9 @@
 			</div>
 			<div>
 
-				<label>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+				<label>Password:&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 
-				<input type="string" name="password"  />
+				<input type="password" name="pwd"  />
 
 			</div>
 			<div>

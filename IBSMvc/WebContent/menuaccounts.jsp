@@ -1,6 +1,9 @@
 <nav>
 
 	<hr />
+	  <a href="home.jsp">Home</a>
+
+	 <span>|</span>
 	  
 	 <a href="fixeddeposit.jsp">Fixed Deposit</a>
 

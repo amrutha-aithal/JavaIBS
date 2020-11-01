@@ -18,6 +18,9 @@
 		<nav>
 
 	<hr />
+	  <a href="home.jsp">Home</a>
+
+	 <span>|</span>
 	  
 	 <a href="accounts.jsp">Accounts</a>
 

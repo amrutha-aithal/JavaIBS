@@ -2,9 +2,13 @@
 
 	<hr />
 
-	 <a href="index.jsp">Home</a>
+	<%--<a href="index.jsp">Home</a>
 
-	 <span>|</span>
+	 <span>|</span> 
+	 
+	 <a href="home.jsp">Home</a>
+
+	 <span>|</span>--%>
 
 	 <a href="accounts.jsp">Accounts</a>
 	 
@@ -13,8 +17,9 @@
 	 <a href="fundtransfer.jsp">Fund Transfer</a>
 	 
 	 <span>|</span>
+	 
 
-	 <a href="services.jsp">Bank Services</a>
+	 <a href="menuservices.jsp">Bank Services</a>
 	 
 	  <span>|</span>
 

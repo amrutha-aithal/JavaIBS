@@ -5,7 +5,7 @@
 
 	<head>
 
-		<title>IBS-Services</title>
+		<title>IBS-Fundtransfer</title>
 
 	</head>
 
@@ -13,24 +13,21 @@
 
 <h3><%=LocalDate.now() %></h3>
 		<h1>IBS BANK</h1>
+<h2>Fund Transfer</h2>
 
-<h2> Service Provider</h2>
 
 <nav>
 
 	<hr />
-	  <a href="home.jsp">Home</a>
+	 <a href="home.jsp">Home</a>
 
 	 <span>|</span>
-	 <a href="addbiller.jsp">Add Biller</a>
-
-	 <span>|</span>
-
-	 <a href="deletebiller.jsp">Delete Biller</a>
 	 
+	 <a href="addpayee.jsp">Add Payee</a>
+
 	 <span>|</span>
 
-	 <a href="paybills.jsp">Pay Bills</a>
+	 <a href="deletepayee.jsp">Delete Payee</a>
 	 
 	 <span>|</span>
 

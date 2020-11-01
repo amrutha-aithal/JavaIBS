@@ -26,7 +26,7 @@
 
 				<label>Account Number:</label>
 				<% String accountNumber = "000123456789";
-					out.println(""+ accountNumber);%>
+					out.println(""+ accountNumber);%> 
 
 			</div>
 			<div>
