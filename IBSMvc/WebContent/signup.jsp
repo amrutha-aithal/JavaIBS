@@ -20,13 +20,13 @@
 
 		<h2>Welcome for registration</h2>
 
-	<form action="si" method="POST" >
+	<form action="sgup" method="POST" >
 
 			<div>
 
 				<label>Customer Name:&nbsp;&nbsp;&nbsp;</label>
 
-				<input type="string" name="customerAmount" required />
+				<input type="string" name="customerName" required />
 
 			</div>
 			<div>
@@ -45,18 +45,30 @@
 			</div>
 			<div>
 
+				<label>Email ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+
+				<input type="string" name="emailId" required />
+
+			</div>
+			<div>
+
 				<label>Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 
 				<input type="string" name="address" required />
 
 			</div>
+			<br/>
+			<br/>
 			<div>
 
-				<button>SEND</button>
+				<button>SUBMIT</button>
+				<button>RESET</button>
 
 			</div>
 			
 </form>
+
+		
 	
 	</body>
 

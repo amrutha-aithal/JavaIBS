@@ -20,29 +20,36 @@
 
 		<h2>Customer Login</h2>
 
-		<form action="sg" method="POST" >
+		<form action="sgin" method="POST" >
 
 			<div>
 
-				<label>Customer ID:&nbsp;&nbsp;&nbsp;</label>
+				<label>Customer Name:&nbsp;&nbsp;&nbsp;</label>
 
-				<input type="string" name="customerID" required />
+				<input type="string" name="customerName"  />
 
 			</div>
 			<div>
 
-				<label>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+				<label>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 
-				<input type="string" name="password" required />
+				<input type="string" name="password"  />
 
 			</div>
 			<div>
 
 				<button>SUBMIT</button>
+				
 
 			</div>
 			
-</form>		
+			
+</form>	
+
+		<form action="fg" method="POST" >	
+		<div> <button>Forgot Password</button> </div>
+		</form>
+		
 	</body>
 
 </html>
