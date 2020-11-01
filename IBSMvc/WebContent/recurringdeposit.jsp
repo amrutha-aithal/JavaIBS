@@ -18,15 +18,12 @@
 		<nav>
 
 	<hr />
-	  <a href="home.jsp">Home</a>
-
-	 <span>|</span>
 	  
 	 <a href="accounts.jsp">Accounts</a>
 
 	 <span>|</span>
 
-	 <a href="fixeddeposit.jsp">Fixed Deposit</a>
+	 <a href="recurringdeposit.jsp">Recurring Deposit</a>
 	 
 	 <span>|</span>
 
@@ -39,51 +36,28 @@
 <form action="rd" method="POST" >
 
 			<div>
-				<label>Deposit Amount:&nbsp;&nbsp;&nbsp;</label>
-
-				<input type="string" name="depositAmnt"  />
-
-			</div>
+				<label>Deposit Amount:&emsp;&emsp;&nbsp; </label>
+				<input type="number" name="amountDeposit" required /> 
+			</div><br/>
 			<div>
-
-				<label>Interest Rate:&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-
-				<input type="string" name="interestRate"  />
-
-			</div>
+				<label>Interest Rate(%) (0-1): </label>
+				<input type="number" name="interestRate" min="0" max="1" step="0.01" required />
+			</div><br/>
 			<div>
-
-				<label><strong><br/>TENURE<br/></strong></label>
-			
-				<label>Years:&emsp;&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-				<input type="string" name="years"  />
-
-			</div>
-			
+				<label>Deposit Date:&emsp;&emsp;&emsp;&nbsp; </label>
+				<input type="date" name="depositDate" required />
+			</div><br/>			
 			<div>
-				<label>Months:&nbsp;&nbsp;&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-				<input type="string" name="months"  />
-
-			</div>
-			
-			<div>			
-				<label>Days:&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-				<input type="string" name="days"  />
-
-			</div>
+				<label>Maturity Date:&emsp;&emsp;&emsp; </label>
+				<input type="date" name="maturityDate" required />
+			</div><br/>
 			<div>
-
-				<button>SUBMIT</button>
-				
-
-			</div>
-			
-			
-</form>	
-
-		
-		</body>
-		
-
-
+				<label>Next Deposit Date:&emsp; </label>
+				<input type="date" name="depositDate" required />
+			</div><br/>
+			<div>
+				<button>SUBMIT</button>		
+			</div>		
+		</form>			
+	</body>
 </html>

@@ -18,15 +18,12 @@
 		<nav>
 
 	<hr />
-	  <a href="home.jsp">Home</a>
-
-	 <span>|</span>
 	  
 	 <a href="accounts.jsp">Accounts</a>
 
 	 <span>|</span>
 
-	 <a href="recurringdeposit.jsp">Recurring Deposit</a>
+	 <a href="fixeddeposit.jsp">Fixed Deposit</a>
 	 
 	 <span>|</span>
 
@@ -38,6 +35,7 @@
 
 <form action="fd" method="POST" >
 
+		<%--
 			<div>
 				<label>Interest payable:&nbsp;&nbsp;&nbsp;</label>
 
@@ -76,20 +74,31 @@
 				<label>Days:&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 				<input type="string" name="days"  />
 
-			</div>
-			<div>
-
-				<button>SUBMIT</button>
-				
-
-			</div>
+			</div> --%>
 			
+			<div>
+				<label>Deposit Amount:&emsp;&emsp;&nbsp; </label>
+				<input type="number" name="amountDeposit" required /> 
+			</div><br/>
+			<div>
+				<label>Interest Rate(%) (0-1): </label>
+				<input type="number" name="interestRate" min="0" max="1" step="0.01" required />
+			</div><br/>
+			<div>
+				<label>Deposit Date:&emsp;&emsp;&emsp;&nbsp; </label>
+				<input type="date" name="depositDate" required />
+			</div><br/>
+			<div>
+				<label>Maturity Date:&emsp;&emsp;&emsp; </label>
+				<input type="date" name="maturityDate" required />
+			</div><br/>
+			<div>
+				<button>SUBMIT</button>		
+			</div>			
 			
 </form>	
-
 		
-		</body>
-		
+		</body>	
 
 
 </html>
