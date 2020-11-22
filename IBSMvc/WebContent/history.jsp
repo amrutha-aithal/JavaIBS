@@ -1,3 +1,4 @@
+
 <%@page import="java.time.LocalDate"%>
 
 
@@ -5,10 +6,9 @@
 
 	<head>
 
-		<title>IBS-Services</title>
+		<title>IBS-History</title>
 
 	</head>
-
 <style>
 
 a{
@@ -40,38 +40,8 @@ body{
 	<body>
 
 <h3><%=LocalDate.now() %></h3>
-		<h1>IBS BANK - Service Provider</h1>
+		<h1>IBS BANK</h1>
 
+		<jsp:include page="menuaccounts.jsp"/>
 
-
-<nav>
-
-	<hr />
-	  <a href="home.jsp">Home</a>
-
-	 <span>|</span>
-	 <a href="addbiller.jsp">Add Biller</a>
-
-	 <span>|</span>
-
-	 <a href="deletebiller.jsp">Delete Biller</a>
-	 
-	 <span>|</span>
-
-	 <a href="paybills.jsp">Pay Bills</a>
-	 
-	 <span>|</span>
-
-	 <a href="history.jsp">History</a>
-	 
-	  <span>|</span>
-
-	 <a href="signout.jsp">Signout</a>
-	 
-	 
-
-	<hr />
-
-</nav>
-
-<p> IBS offers variety of services like pay phone bills, electricity bills and lot more just in a click.</p>
+</body>

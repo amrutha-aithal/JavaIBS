@@ -9,6 +9,34 @@
 
 	</head>
 
+<style>
+
+a{
+
+background-color: LightGray;
+color:#990000;
+font-size: large;
+border: 2px black;
+}
+
+a:hover{
+background-color: yellow;
+}
+
+body{
+		background-color: #FFFFF0;
+		
+		background-image: url(https://st.depositphotos.com/1760261/1348/i/950/depositphotos_13481996-stock-photo-bank.jpg);
+		background-position: center top;
+		background-size: 150px;
+ 		
+  		
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		}
+		
+</style>
+
 	<body>
 
 <h3><%=LocalDate.now() %></h3>
@@ -58,30 +86,30 @@ out.println(""+request.getParameter("command")); --%>
 
 				<input type="string" name="accountNumber"  />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>IFSC Code:&nbsp;&nbsp;&nbsp; </label>
 
 				<input type="string" name="ifscCode"  />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>Payee Name:&nbsp; </label>
 				<input type="string" name="payeeName"  />
 
-			</div>			
+			</div>		<br>	
 			<div>
 				<label>Mobile No:&emsp; </label>
 				<input type="string" name="mobileNumber"  />
 
-			</div>
+			</div><br>
 			<div>
 				<label>Email ID:&emsp;&nbsp;&nbsp;&nbsp; </label>
-				<input type="string" name="emailID"  />
+				<input type="email" name="emailID"  />
 
-			</div>
+			</div><br>
 			
 							<button>SUBMIT</button>
 				

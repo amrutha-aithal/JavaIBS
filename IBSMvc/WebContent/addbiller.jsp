@@ -1,4 +1,4 @@
-
+<%@page import="java.time.LocalDate"%>
 
 <html>
 
@@ -7,15 +7,42 @@
 		<title>IBS-Add Biller</title>
 
 	</head>
+<style>
+
+a{
+
+background-color: LightGray;
+color:#990000;
+font-size: large;
+border: 2px black;
+}
+
+a:hover{
+background-color: yellow;
+}
+
+body{
+		background-color: #FFFFF0;
+		
+		background-image: url(https://st.depositphotos.com/1760261/1348/i/950/depositphotos_13481996-stock-photo-bank.jpg);
+		background-position: center top;
+		background-size: 150px;
+ 		
+  		
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		}
+		
+</style>
 
 	<body>
 
 		
-
-		<h1>IBS BANK</h1>
+<h3><%=LocalDate.now() %></h3>
+		<h1>IBS BANK - Add Biller</h1>
 		
 
-		<h2>Add Biller</h2>
+		
 		
 		<nav>
 
@@ -53,35 +80,35 @@
 
 				<input type="string" name="proprietorName"  />
 
-			</div>
+			</div> <br>
 			<div>
 
 				<label>Account Number:&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 
 				<input type="string" name="accountNumber"  />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>Confirm Account Number:&nbsp;&nbsp; </label>
 
 				<input type="string" name="accountNumber"  />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>Display Name:&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 
 				<input type="string" name="displayName"  />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>Category:&emsp;&emsp;&emsp;&emsp;&nbsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; </label>
 
 				<input type="string" name="category"  />
 
-			</div>
+			</div><br>
 			<div>
 
 				<button>SUBMIT</button>

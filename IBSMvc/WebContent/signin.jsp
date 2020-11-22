@@ -29,6 +29,8 @@
 				<input type="string" name="customerName"  />
 
 			</div>
+			
+			<br>
 			<div>
 
 				<label>Password:&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
@@ -36,6 +38,7 @@
 				<input type="password" name="pwd"  />
 
 			</div>
+			<br>
 			<div>
 
 				<button>SUBMIT</button>

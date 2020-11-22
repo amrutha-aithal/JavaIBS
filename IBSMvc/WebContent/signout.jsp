@@ -10,7 +10,7 @@
 
 		
 
-		<h1>IBS BANK</h1>
+		
 
 		<jsp:include page="index.jsp"/>
 

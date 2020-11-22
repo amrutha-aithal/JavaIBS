@@ -29,6 +29,8 @@
 				<td><em><strong><%=customer.getCustomerName() %></strong></em></td></tr>
 				<%--<td><em><%=customer.getPassword() %></em></td></tr>--%>
 				</table>
+				
+				
 		<p>
 
 		 

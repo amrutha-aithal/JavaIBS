@@ -28,35 +28,35 @@
 
 				<input type="string" name="customerName" required />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>Date of Birth:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 
-				<input type="string" name="dateOfBirth" required />
+				<input type="date" name="dateOfBirth" required />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>Phone Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 
 				<input type="string" name="phoneNumber" required />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>Email ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
 
-				<input type="string" name="emailId" required />
+				<input type="email" name="emailId" required />
 
-			</div>
+			</div><br>
 			<div>
 
 				<label>Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 
 				<input type="string" name="address" required />
 
-			</div>
+			</div><br>
 			<br/>
 			<br/>
 			<div>

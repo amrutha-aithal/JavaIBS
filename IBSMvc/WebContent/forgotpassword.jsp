@@ -26,9 +26,9 @@
 
 				<label>Email ID:&nbsp;&nbsp;&nbsp;</label>
 
-				<input type="string" name="emailId" required />
+				<input type="email" name="emailId" required />
 
-			</div>
+			</div><br>
 			
 			<div>
 
