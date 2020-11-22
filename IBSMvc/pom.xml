@@ -4,15 +4,26 @@
   <artifactId>IBSMvc</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>  
   <dependencies>
   <dependency>
-  <groupId>javax.servlet</groupId>
-  <artifactId>jstl</artifactId>
-  <version>1.2</version> 
-  
+  	<groupId>javax.servlet</groupId>
+  	<artifactId>jstl</artifactId>
+  	<version>1.2</version>   
   </dependency>
-  
+  <dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-core</artifactId>
+	<version>5.4.1.Final</version>
+  </dependency>
+  <dependency>
+	<groupId>mysql</groupId>
+	<artifactId>mysql-connector-java</artifactId>
+	<version>8.0.11</version>
+  </dependency>  
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>

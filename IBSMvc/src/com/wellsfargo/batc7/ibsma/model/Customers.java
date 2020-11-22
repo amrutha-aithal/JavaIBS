@@ -2,7 +2,7 @@ package com.wellsfargo.batc7.ibsma.model;
 
 
 
-public class Customer {
+public class Customers {
 	
 	private String customerName;
 	
@@ -16,11 +16,11 @@ public class Customer {
 	
 	private String emailId;
 	
-	public Customer() {
+	public Customers() {
 		
 	}
 
-	public Customer(String customerName, String password, String dateOfBirth, String phoneNumber, String address,
+	public Customers(String customerName, String password, String dateOfBirth, String phoneNumber, String address,
 			String emailId) {
 		super();
 		this.customerName = customerName;
