@@ -1,75 +1,82 @@
-
-
 <html>
 
-	<head>
+<head>
 
-		<title>IBS-Signup</title>
+<title>IBS-SignUp</title>
+<style type="text/css">
+div.left {
+	width: 150px;
+	float: left;
+}
 
-	</head>
+h1 {
+	text-decoration-line: underline;
+}
 
-	<body>
+a {
+	text-decoration: none;
+}
+</style>
 
-		
+</head>
 
-		<h1>IBS BANK</h1>
+<body>
 
-		<jsp:include page="menu.jsp"/>
+	<h1>IBS BANK</h1>
 
-		
+	<jsp:include page="menu.jsp" />
 
-		<h2>Welcome for registration</h2>
+	<h2>Welcome for registration</h2>
 
-	<form action="sgup" method="POST" >
+	<form action="sgup" method="POST">
 
-			<div>
+		<div class="left">
+			<label for="customerName">Customer Name</label>
+		</div>
+		<div>
+			<input type="text" id="customerName" name="customerName" required />
+		</div>
+		<br>
+		<div class="left">
+			<label for="dateOfBirth">Date of Birth</label>
+		</div>
+		<div>
+			<input type="date" id="dateOfBirth" name="dateOfBirth" required />
+		</div>
+		<br>
+		<div class="left">
+			<label for="phoneNumber">Phone Number</label>
+		</div>
+		<div>
+			<input type="text" id="phoneNumber" name="phoneNumber" required />
+		</div>
+		<br>
+		<div class="left">
+			<label for="emailId">Email ID</label>
+		</div>
+		<div>
+			<input type="email" id="emailId" name="emailId" required />
+		</div>
+		<br>
+		<div class="left">
+			<label for="address">Address</label>
+		</div>
+		<div>
+			<textarea id="address" name="address" rows="4" cols="50"
+				maxlength="200" placeholder="Enter Address here..."></textarea>
+		</div>
+		<br> <br /> <br />
+		<div class="left">
+			<input type="submit" value="SUBMIT">
+		</div>
+		<div>
+			<input type="reset" value="RESET">
+		</div>
 
-				<label>Customer Name:&nbsp;&nbsp;&nbsp;</label>
+	</form>
 
-				<input type="string" name="customerName" required />
 
-			</div><br>
-			<div>
 
-				<label>Date of Birth:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-
-				<input type="date" name="dateOfBirth" required />
-
-			</div><br>
-			<div>
-
-				<label>Phone Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-
-				<input type="string" name="phoneNumber" required />
-
-			</div><br>
-			<div>
-
-				<label>Email ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-
-				<input type="email" name="emailId" required />
-
-			</div><br>
-			<div>
-
-				<label>Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-
-				<input type="string" name="address" required />
-
-			</div><br>
-			<br/>
-			<br/>
-			<div>
-
-				<button>SUBMIT</button>
-				<button>RESET</button>
-
-			</div>
-			
-</form>
-
-		
-	
-	</body>
+</body>
 
 </html>

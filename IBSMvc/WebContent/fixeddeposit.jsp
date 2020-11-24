@@ -39,7 +39,6 @@ body{
 </style>
 	<body>
 
-<h3><%=LocalDate.now() %></h3>
 		<h2>IBS BANK-Fixed Deposit</h2>
 		
 		<nav>

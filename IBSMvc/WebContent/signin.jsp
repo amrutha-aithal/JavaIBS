@@ -1,58 +1,60 @@
-
+<!doctype html>
 
 <html>
 
-	<head>
+<head>
+<title>IBS-SignIn</title>
+<style>
+a {
+	text-decoration: none;
+	display: inline-block;
+}
 
-		<title>IBS-Signin</title>
+.left {
+	width: 150px;
+	float: left;
+}
 
-	</head>
+.center {
+	padding-left: 50px;
+	float: left;
+	
+}
 
-	<body>
+h1 {
+	text-decoration-line: underline;
+}
+</style>
+</head>
 
-		
+<body>
+	<h1>IBS BANK</h1>
+	<jsp:include page="menu.jsp" />
+	<h2>Customer Login</h2>
+	<form action="sgin" method="POST">
+		<div class="left">
+			<label for="customerName">Customer Name</label>
+		</div>
+		<div>
+			<input type="text" id="customerName" name="customerName" required>
+		</div>
+		<br>
+		<div class="left">
+			<label for="password">Password</label>
+		</div>
+		<div>
+			<input type="password" name="pwd" required>
+		</div>
+		<br>
+		<div class="center">
+			<input type="submit" name="submit" id="submit" value="Sign In">
+		</div>
+		<div class="center">
+			<a href="forgotpassword.jsp">Forgot Password</a>
+		</div>
+		<br>
+	</form>
 
-		<h1>IBS BANK</h1>
-
-		<jsp:include page="menu.jsp"/>
-
-		
-
-		<h2>Customer Login</h2>
-
-		<form action="sgin" method="POST" >
-
-			<div>
-
-				<label>Customer Name:&nbsp;&nbsp;&nbsp;</label>
-
-				<input type="string" name="customerName"  />
-
-			</div>
-			
-			<br>
-			<div>
-
-				<label>Password:&nbsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
-
-				<input type="password" name="pwd"  />
-
-			</div>
-			<br>
-			<div>
-
-				<button>SUBMIT</button>
-				
-
-			</div>
-			
-			
-</form>	
-
-		<form action="fg" method="POST" >	
-		<div> <button>Forgot Password</button> </div>
-		</form>
-		
-	</body>
+</body>
 
 </html>

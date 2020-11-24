@@ -20,7 +20,7 @@
 
 		<h2>Customer Forgot Password</h2>
 
-		<form action="sgin" method="POST" >
+		<form action="index.jsp" method="POST" >
 
 			<div>
 

@@ -1,46 +1,8 @@
-<!-- <style>
-
-a{
-
-background-color: LightGray;
-color:#990000;
-font-size: large;
-border: 2px black;
-}
-
-a:hover{
-background-color: yellow;
-}
-
-body{
-		background-color: #FFFFF0;
-		
-		background-image: url(https://st.depositphotos.com/1760261/1348/i/950/depositphotos_13481996-stock-photo-bank.jpg);
-		background-position: center top;
-		background-size: 400px;
- 		
-  		
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		}
-		
-
-
-
-
-
-
-</style>
- -->
- 
+<%@page import="java.time.LocalDateTime"%>
+<%@ page import="java.time.format.DateTimeFormatter"%>
  <link rel="stylesheet" href="/IBSMvc/style.css" />
-
-
-
-
-
-<nav>
-
+<nav class="nav">
+		
 	<hr />
 
 	 <a href="index.jsp">Home</a>
@@ -52,6 +14,11 @@ body{
 	 <span>|</span>
 
 	 <a href="signin.jsp">Sign In</a>
+	 
+	 <div class="date">
+		<%LocalDateTime localDateTime = LocalDateTime.now();%>
+		<%=localDateTime.format(DateTimeFormatter.ofPattern("dd-MMM-YYYY hh:mm a"))%>
+	</div>
 
 	<hr />
 
