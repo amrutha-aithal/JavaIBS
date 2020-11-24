@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
 
 a{
 
@@ -24,7 +24,9 @@ body{
 		background-attachment: fixed;
 		}
 		
-</style>
+</style>-->
+
+<link rel="stylesheet" href="/IBSMvc/style1.css" />
 
 
 
