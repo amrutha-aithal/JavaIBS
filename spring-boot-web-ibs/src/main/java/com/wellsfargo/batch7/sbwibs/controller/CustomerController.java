@@ -1,5 +1,8 @@
 package com.wellsfargo.batch7.sbwibs.controller;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wellsfargo.batch7.sbwibs.exception.IBSException;
+import com.wellsfargo.batch7.sbwibs.model.AccountModel;
 import com.wellsfargo.batch7.sbwibs.model.CustomerModel;
 import com.wellsfargo.batch7.sbwibs.model.IbsUserModel;
 import com.wellsfargo.batch7.sbwibs.service.CustomerService;
@@ -86,6 +90,9 @@ public class CustomerController {
 		if(result.hasErrors()) {
 			mv.addObject("customer",customer);	
 		}else {
+			customer.setSavAccount(new AccountModel("1234567890100", "Savings", 12000.00,4.25,
+				null, null, 12500.00, 3.5,
+					36.0, 100000.00, 120000.00));
 			customerService.add(customer);
 			mv.addObject("customer",new CustomerModel());
 		}

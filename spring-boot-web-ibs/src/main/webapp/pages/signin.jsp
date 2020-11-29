@@ -1,4 +1,4 @@
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!doctype html>
 
@@ -6,6 +6,7 @@
 
 <head>
 <title>IBS-SignIn</title>
+
 <style>
 a {
 	text-decoration: none;
@@ -20,7 +21,6 @@ a {
 .center {
 	padding-left: 50px;
 	float: left;
-	
 }
 
 h1 {
@@ -57,26 +57,39 @@ h1 {
 		<br>
 	</form> -->
 	<section class="container-fluid p-4">
-	<div class="mb-5">
-				<form:form action="/signin/submit" method="POST" 
-					modelAttribute="group" class="form-inline">
-					
-					<div>
-						<form:errors path="*" />
-					</div>
-					<label for="userName">User Name</label>
-					<form:input path="userName" type="text" 
-						class="form-control mr-2" placeholder="User Name"/><br><br>
-						<label for="password">Password</label>
-					<form:input path="password" type="text" 
-						class="form-control mr-2" placeholder="Password"/><br><br>
-					<button class="btn btn-sm btn-primary">Sign In</button><br>
-				</form:form></div>
-				<br><br>
+		<div class="mb-5">
+			<form:form action="/signin/submit" method="POST"
+				modelAttribute="group" class="form-inline">
 				<div>
-				<a href="/signin/forgotpassword" button class="btn btn-sm btn-danger">Forgot Password</a>
-</div>
-</section>
+					<form:errors path="*" />
+				</div>
+				<div class="left">
+					<form:label path="userName">User Name</form:label>
+				</div>
+				<div>
+					<form:input path="userName" type="text" class="form-control mr-2"
+						placeholder="User Name" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="password">Password</form:label>
+				</div>
+				<div>
+					<form:input type="password" path="password"
+						class="form-control mr-2" placeholder="Password" />
+				</div>
+				<br>
+				<div class="center">
+					<form:button class="btn btn-sm btn-primary">Sign In</form:button>
+				</div>
+				<br>
+			</form:form>
+		</div>
+		<br>
+		<div class="center">
+			<a href="/signin/forgotpassword">Forgot Password</a>
+		</div>
+	</section>
 </body>
 
 </html>

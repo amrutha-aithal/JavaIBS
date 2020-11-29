@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 			/*if(CustomerRepo.existsById(im.getUserId())) {
 				throw new IBSException("Customer#"+customer.getUserId()+" already exists");
 			}*/
-			customer = EMParser.parse(customerRepo.save(EMParser.parse(customer)));
+			customerRepo.save(EMParser.parse(customer));
 		}
 		return customer;
 	}

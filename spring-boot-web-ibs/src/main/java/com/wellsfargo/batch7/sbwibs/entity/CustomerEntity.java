@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ibs_customer")
-//@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.JOINED)
 public class CustomerEntity extends IbsUserEntity {
 	
 	@Column(name="cname",nullable=false)
@@ -22,13 +22,13 @@ public class CustomerEntity extends IbsUserEntity {
 	@Column(name="phone",nullable=false,unique=true)
 	private String phoneNumber;
 	
-	@Column(name="address",nullable=false)
+	@Column(name="address")
 	private String address;
 	
 	@Column(name="email",nullable=false,unique=true)
 	private String emailId;
 	
-	@Column(name="txnPwd",nullable=false)
+	@Column(name="txnPwd")
 	private String txnPassword;
 	
 	@OneToOne(mappedBy="accountHolder",cascade=CascadeType.ALL)

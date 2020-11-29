@@ -62,7 +62,7 @@ public class AccountModel {
 
 	public AccountModel(String accountNum, String accountType, Double amountDeposit, Double interestRate,
 			Date depositDate, Date maturityDate, Double interestReceived, Double timeInYears,
-			Double timeInMonths, Double maturityAmount, Double balanceAmt, CustomerModel accountHolder) {
+			Double timeInMonths, Double maturityAmount, Double balanceAmt) {
 		super();
 		this.accountNum = accountNum;
 		this.accountType = accountType;
@@ -75,7 +75,6 @@ public class AccountModel {
 		this.timeInMonths = timeInMonths;
 		this.maturityAmount = maturityAmount;
 		this.balanceAmt = balanceAmt;
-		this.accountHolder = accountHolder;
 	}
 
 	public String getAccountNum() {

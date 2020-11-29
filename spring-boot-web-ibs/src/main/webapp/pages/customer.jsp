@@ -38,55 +38,76 @@ a {
 				<div>
 					<form:errors path="*" />
 				</div>
-
-				<div class="form-control-group">
+				<form:hidden path="txnPassword" value=""/>
+				<div class="left">
 					<form:label path="customerName" class="form-control-label">Full Name</form:label>
-					<form:input path="customerName" class="form-control" type="text"/>
-				</div><br>
-				<div class="form-control-group">
-					<form:label path="dateOfBirth" class="form-control-label">Date of Birth</form:label>
-					<form:input path="dateOfBirth" class="form-control" type="text"/>
-				</div><br>
-				<div class="form-control-group">
-					<form:label path="phoneNumber" class="form-control-label">Phone Number</form:label>
-					<form:input path="phoneNumber" class="form-control" type="text"/>
-				</div><br>
-				<div class="form-control-group">
-					<form:label path="emailId" class="form-control-label">Email ID</form:label>
-					<form:input path="emailId" class="form-control" type="text"/>
-				</div><br>
-				<div class="form-control-group">
-					<form:label path="address" class="form-control-label">Address</form:label>
-					<form:input path="address" class="form-control" type="text"/>
-				</div><br>
-				<div class="form-control-group">
-					<form:label path="userId" class="form-control-label">User Id</form:label>
-					<form:input path="userId" class="form-control" type="number"/>
-				</div><br>
-				<div class="form-control-group">
-					<form:label path="userName" class="form-control-label">User Name</form:label>
-					<form:input path="userName" class="form-control" type="text"/>
-				</div><br>
-				<div class="form-control-group">
-					<form:label path="role" class="form-control-label">Role</form:label>
-					<form:input path="role" class="form-control" type="text"/>
-				</div><br>
-				<div class="form-control-group">
-					<form:label path="password" class="form-control-label">Password</form:label>
-					<form:input path="password" class="form-control" type="text"/>
-				</div> <br>
-				
-				
-				<div class="form-control-group">
-					<button class="btn btn-primary">ADD</button>
-				</div><br>
-				<div>
-				<a href="/customer/reset" button class="btn btn-sm btn-danger">RESET</a>
 				</div>
-
-				
-
-				
+				<div>
+					<form:input path="customerName" class="form-control" type="text" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="dateOfBirth" class="form-control-label">Date of Birth</form:label>
+				</div>
+				<div>
+					<form:input path="dateOfBirth" class="form-control" type="date" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="phoneNumber" class="form-control-label">Phone Number</form:label>
+				</div>
+				<div>
+					<form:input path="phoneNumber" class="form-control" type="text" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="emailId" class="form-control-label">Email ID</form:label>
+				</div>
+				<div>
+					<form:input path="emailId" class="form-control" type="text" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="address" class="form-control-label">Address</form:label>
+				</div>
+				<div>
+					<form:input path="address" class="form-control" type="text" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="userId" class="form-control-label">User Id</form:label>
+				</div>
+				<div>
+					<form:input path="userId" class="form-control" type="number" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="userName" class="form-control-label">User Name</form:label>
+				</div>
+				<div>
+					<form:input path="userName" class="form-control" type="text" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="password" class="form-control-label">Password</form:label>
+				</div>
+				<div>
+					<form:input path="password" class="form-control" type="password" />
+				</div>
+				<br>
+				<div class="left">
+					<form:label path="role" class="form-control-label">Role</form:label>
+				</div>
+				<div>
+					<form:input path="role" class="form-control" type="text" />
+				</div>
+				<br>
+				<div class="left">
+					<button class="btn btn-primary">Register</button>
+				</div>
+				<div>
+					<a href="/customer/reset">Reset</a>
+				</div>
 			</form:form>
 		</div>
 	</section>

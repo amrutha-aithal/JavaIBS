@@ -48,12 +48,13 @@ a {
 					<form:input path="userName" type="text" 
 						class="form-control mr-2" placeholder="User Name"/><br><br>
 						<label for="password">Password</label>
-					<form:input path="password" type="text" 
+					<form:input path="password" type="password" 
 						class="form-control mr-2" placeholder="Password"/><br><br>
 						<label for="role">Role</label>
 					<form:input path="role" type="text" 
 						class="form-control mr-2" placeholder="Role"/><br><br>
-					<button class="btn btn-sm btn-primary">ADD</button>
+					<button class="btn btn-sm btn-primary">Register</button>
+					<input type="reset" value="Reset">
 				</form:form>
 			</div>
 	<!-- <form action="sgup" method="POST">
@@ -99,8 +100,8 @@ a {
 		</div> -->
 		<div>
 			<!-- <input type="reset" value="RESET">
-			<button class="btn btn-sm btn-primary">RESET</button> -->
-			<a href="/signup/reset" button class="btn btn-sm btn-danger">RESET</a>
+			<button class="btn btn-sm btn-primary">RESET</button>
+			<a href="/signup/reset" button class="btn btn-sm btn-danger">RESET</a> -->
 										
 		</div>
 
