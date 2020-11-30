@@ -36,6 +36,11 @@ public class SigninController {
 		return "/signin/forgotpassword";
 	}
 	
+	@GetMapping("/home")
+	public String homeAction() throws IBSException {
+		return "/signin/home";
+	}
+	
 	@GetMapping("/signout")
 	public String signoutAction() throws IBSException {
 		return "pages/home-page";
