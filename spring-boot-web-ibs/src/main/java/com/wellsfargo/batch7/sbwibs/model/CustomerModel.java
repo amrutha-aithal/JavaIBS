@@ -1,11 +1,16 @@
 package com.wellsfargo.batch7.sbwibs.model;
 
 
+import java.io.File;
+import java.time.LocalDate;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class CustomerModel extends IbsUserModel {
 	
@@ -14,8 +19,9 @@ public class CustomerModel extends IbsUserModel {
 	private String customerName;
 	
 	@NotNull(message="DoB is mandatory")
-	@NotBlank(message="DoB name can not be null")
-	private String dateOfBirth;
+	@DateTimeFormat(iso=ISO.DATE)
+	@Past(message="DoB should be a past Date")
+	private LocalDate dateOfBirth;
 	
 	@NotNull(message="Phone num is mandatory")
 	@NotBlank(message="Phone num can not be null")
@@ -30,10 +36,19 @@ public class CustomerModel extends IbsUserModel {
 	@NotBlank(message="Email ID can not be null")
 	@Email(message = "Email Id is not valied")
 	private String emailId;
+
+
+	private File data;
 	
-	
+	public File getData() {
+		return data;
+	}
+
+	public void setData(File data) {
+		this.data = data;
+	}
+
 	private String txnPassword;
-	
 	
 	private AccountModel savAccount;
 	
@@ -41,7 +56,7 @@ public class CustomerModel extends IbsUserModel {
 		
 	}	
 
-	public CustomerModel(Integer userId, String userName, String password, String role,String customerName, String dateOfBirth, String phoneNumber, String address, String emailId,
+	public CustomerModel(Long userId, String userName, String password, String role,String customerName, LocalDate dateOfBirth, String phoneNumber, String address, String emailId,
 			String txnPassword) {
 		super(userId, userName, password, role);
 		this.customerName = customerName;
@@ -62,11 +77,12 @@ public class CustomerModel extends IbsUserModel {
 		this.customerName = customerName;
 	}
 
-	public String getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		
 		this.dateOfBirth = dateOfBirth;
 	}
 

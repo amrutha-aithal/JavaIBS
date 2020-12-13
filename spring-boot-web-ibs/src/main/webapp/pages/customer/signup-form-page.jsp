@@ -46,7 +46,7 @@
 				</div>
 				<div class="form-control-group">
 					<form:label path="dateOfBirth" class="form-control-label">Date of Birth</form:label>
-					<form:input path="dateOfBirth" class="form-control"/>
+					<form:input path="dateOfBirth" class="form-control" type="date"/>
 				</div>
 				<div class="form-control-group">
 					<form:label path="phoneNumber" class="form-control-label">Phone Number</form:label>

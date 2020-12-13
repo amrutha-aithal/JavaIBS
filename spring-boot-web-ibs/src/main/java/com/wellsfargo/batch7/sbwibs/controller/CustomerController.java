@@ -18,6 +18,7 @@ import com.wellsfargo.batch7.sbwibs.exception.IBSException;
 import com.wellsfargo.batch7.sbwibs.model.AccountModel;
 import com.wellsfargo.batch7.sbwibs.model.CustomerModel;
 import com.wellsfargo.batch7.sbwibs.model.IbsUserModel;
+import com.wellsfargo.batch7.sbwibs.security.UserDetailsServiceImpl;
 import com.wellsfargo.batch7.sbwibs.service.CustomerService;
 import com.wellsfargo.batch7.sbwibs.service.IbsUserService;
 
@@ -32,6 +33,9 @@ public class CustomerController {
 	//private AccountService accountService;
 	
 	@Autowired
+	private UserDetailsServiceImpl userService;
+	
+	@Autowired
 	private IbsUserService ibuService;
 	
 	@GetMapping
@@ -44,22 +48,7 @@ public class CustomerController {
 	public String resetAction() throws IBSException {
 		return "redirect:/customer";
 	}
-		/*ModelAndView mv = new ModelAndView();
-		mv.setViewName("customer");
-		mv.addObject("group1",new CustomerModel());
-		//mv.addObject("group1",new IbsUserModel());
-		return mv;
-		//return "redirect:/cutomer";
-	}*/
-	
-	
-	
-	/*@GetMapping("/new")
-	public ModelAndView newCustomerAction() {
-		ModelAndView mv = new ModelAndView("customer/signup-form-page","customer",new CustomerModel());
-		mv.addObject("isNew",true);
-		return mv;
-	}*/
+		
 
 	/*@PostMapping("/add")
 	public ModelAndView addCustomerAction(
@@ -85,16 +74,18 @@ public class CustomerController {
 			BindingResult result) throws IBSException {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("customer");
+		mv.setViewName("signup");
 		
 		if(result.hasErrors()) {
 			mv.addObject("customer",customer);	
 		}else {
-			customer.setSavAccount(new AccountModel("1234567890100", "Savings", 12000.00,4.25,
-				null, null, 12500.00, 3.5,
-					36.0, 100000.00, 120000.00));
-			customerService.add(customer);
-			mv.addObject("customer",new CustomerModel());
+//			customer.setSavAccount(new AccountModel("1234567890100", "Savings", 12000.00,4.25,
+//				null, null, 12500.00, 3.5,
+//					36.0, 100000.00, 120000.00));
+			userService.register(customer);
+			mv = new ModelAndView("redirect:/signin");
+//			customerService.add(customer);
+//			mv.addObject("customer",new CustomerModel());
 		}
 		
 		//mv.addObject("groups",iuService.getAll());

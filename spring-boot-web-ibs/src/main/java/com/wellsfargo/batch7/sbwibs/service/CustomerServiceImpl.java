@@ -17,18 +17,19 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepo customerRepo;
 	
+	/*
 	@Transactional
 	@Override
 	public CustomerModel add(CustomerModel customer) throws IBSException {
 		if(customer!=null) {
 			//IbsUserModel im = new IbsUserModel();
-			/*if(CustomerRepo.existsById(im.getUserId())) {
+			if(CustomerRepo.existsById(im.getUserId())) {
 				throw new IBSException("Customer#"+customer.getUserId()+" already exists");
-			}*/
+			}
 			customerRepo.save(EMParser.parse(customer));
 		}
 		return customer;
-	}
+	}*/
 
 
 }

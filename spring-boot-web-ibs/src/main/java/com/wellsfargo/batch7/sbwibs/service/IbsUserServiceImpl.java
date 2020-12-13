@@ -30,14 +30,4 @@ public class IbsUserServiceImpl implements IbsUserService {
 		return ibsuser;
 	}
 
-	//@Override
-	/*public IbsUserModel get(int userID) throws IBSException {
-		if(!iuRepo.existsById(userID)) {
-			throw new IBSException("AddressGroup#"+userID+" does not exists");
-		}
-		return EMParser.parse(iuRepo.findById(userID).get());
-	}*/
-	
-		
-
 }

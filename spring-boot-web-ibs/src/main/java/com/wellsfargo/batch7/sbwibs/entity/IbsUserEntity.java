@@ -1,15 +1,13 @@
 package com.wellsfargo.batch7.sbwibs.entity;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -26,10 +24,10 @@ public class IbsUserEntity {
 
 	@Id
 	@Column(name="uid")
-	//@GeneratedValue
-	private Integer userId;
-	//,unique=true
-	@Column(name="unm",nullable=false)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="Custid_generator")
+	@SequenceGenerator(name="Custid_generator", sequenceName="CustId_seq",allocationSize=1,initialValue=1000000000)
+	private Long userId;
+	@Column(name="unm",nullable=false,unique=true)
 	private String userName;
 	
 	@Column(name="pwd",nullable=false)
@@ -42,7 +40,7 @@ public class IbsUserEntity {
 		
 	}
 
-	public IbsUserEntity(Integer userId, String userName, String password, String role) {
+	public IbsUserEntity(Long userId, String userName, String password, String role) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -50,11 +48,11 @@ public class IbsUserEntity {
 		this.role = role;
 	}
 
-	public Integer getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

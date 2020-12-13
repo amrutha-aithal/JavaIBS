@@ -3,6 +3,9 @@ package com.wellsfargo.batch7.sbwibs.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +44,35 @@ public class SigninController {
 		return "/signin/home";
 	}
 	
+	
+	@RequestMapping("/header")
+	public ModelAndView headerAction() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("header-fragment");
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken) && auth.isAuthenticated()) {			
+			mv.addObject("role",auth.getAuthorities().stream().findFirst().get().getAuthority());
+			mv.addObject("userName",auth.getName());
+		}
+
+		return mv;
+	}
+	
+	@GetMapping("/signin")
+	public String loginAction() {
+		String view = "/signin/submit";
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken) && auth.isAuthenticated()) {
+			view = "redirect:/signin";
+		}
+
+		return view;
+	}
+	
 	@GetMapping("/signout")
 	public String signoutAction() throws IBSException {
 		return "pages/home-page";
@@ -59,8 +91,6 @@ public class SigninController {
 		}else {
 			mv.setViewName("/signin/home");
 		}
-		
-		//mv.addObject("groups",iuService.getAll());
 		return mv;
 	}
 	

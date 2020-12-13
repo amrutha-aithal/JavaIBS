@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import com.wellsfargo.batch7.sbwibs.entity.IbsUserEntity;
 
-public interface IbsUserRepo extends JpaRepository<IbsUserEntity, Integer> {
+@Repository
+public interface IbsUserRepo extends JpaRepository<IbsUserEntity, Long> {
 
+	boolean existsByUserName(String username);
+	
+	IbsUserEntity findByUserName(String userName);
 }

@@ -73,6 +73,7 @@ public class EMParser {
 		target.setEmailId(source.getEmailId());
 		target.setPhoneNumber(source.getPhoneNumber());
 		target.setTxnPassword(source.getTxnPassword());
+		target.setData(source.getData());
 //		target.setSavAccount(parse(source.getSavAccount()));
 		return target;
 	}
@@ -89,6 +90,7 @@ public class EMParser {
 		target.setEmailId(source.getEmailId());
 		target.setPhoneNumber(source.getPhoneNumber());
 		target.setTxnPassword(source.getTxnPassword());
+		target.setData(source.getData());
 //		target.setSavAccount(parse(source.getSavAccount()));
 		return target;
 	}

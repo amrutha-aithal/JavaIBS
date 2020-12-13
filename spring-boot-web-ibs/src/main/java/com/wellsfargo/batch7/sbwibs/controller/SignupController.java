@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wellsfargo.batch7.sbwibs.security.UserDetailsServiceImpl;
 import com.wellsfargo.batch7.sbwibs.exception.IBSException;
 import com.wellsfargo.batch7.sbwibs.model.CustomerModel;
 import com.wellsfargo.batch7.sbwibs.model.IbsUserModel;
@@ -25,44 +26,31 @@ public class SignupController {
 	@Autowired
 	private IbsUserService iuService;
 	
-//	@GetMapping
-//	public ModelAndView groupsAction() throws IBSException {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("signup");
-//		mv.addObject("group",new IbsUserModel());
-//		return mv;
-//	}
-	
+	@Autowired
+	private UserDetailsServiceImpl userService;
+		
 	@GetMapping
 	public ModelAndView groupsAction() throws IBSException {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("customer");
+		mv.setViewName("signup");
 		mv.addObject("customer",new CustomerModel());
 		return mv;
 	}
 	
-	
-	@GetMapping("/reset")
-	public String resetAction() throws IBSException {
-		return "redirect:/signup";
-	}
-	
-	@PostMapping("/add")
-	public ModelAndView addAction(
-			@ModelAttribute("group") @Valid IbsUserModel group,
+	@PostMapping
+	public ModelAndView addCustomerAction(
+			@ModelAttribute("customer") @Valid CustomerModel customer,
 			BindingResult result) throws IBSException {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("signup");
 		
 		if(result.hasErrors()) {
-			mv.addObject("group",group);	
+			mv.addObject("customer",customer);	
 		}else {
-			iuService.add(group);
-			mv.addObject("group",new IbsUserModel());
+			userService.register(customer);
+			mv = new ModelAndView("redirect:/signin");
 		}
-		
-		//mv.addObject("groups",iuService.getAll());
 		return mv;
 	}
 	
