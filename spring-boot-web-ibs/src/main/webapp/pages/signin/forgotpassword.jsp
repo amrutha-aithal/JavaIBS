@@ -24,8 +24,6 @@
 	</head>
 
 	<body>	
-
-		<h1>IBS BANK</h1>
 		<jsp:include page="/header"/>	
 		<h2>Customer Forgot Password</h2>
 		<section class="container-fluid p-4">
@@ -37,18 +35,6 @@
 				</div>
 				<br>
 				<button>SUBMIT</button>
-
-			<%-- <div>
-
-				<label>Email ID:&nbsp;&nbsp;&nbsp;</label>
-
-				<input type="email" name="emailId" required />
-
-			</div><br>
-			
-			<div>
-
-				<button>SUBMIT</button> --%>
 				</form>		
 			</div>
 		</section>	

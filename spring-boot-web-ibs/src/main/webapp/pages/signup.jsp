@@ -24,7 +24,7 @@
 	<section class="container-fluid p-4">
 		<div class="col-sm-4">
 			<div align="center">
-				<h2>Sign Up</h2>
+				<h2>IBS-Sign Up</h2>
 			</div>
 			<form:form action="/signup" method="POST" modelAttribute="customer"
 				class="form-horizontal">

@@ -1,51 +1,25 @@
-<!-- <style>
+<%@page import="java.time.LocalDateTime"%>
+<%@ page import="java.time.format.DateTimeFormatter"%>
+<%LocalDateTime localDateTime = LocalDateTime.now();%>
+<% String date=localDateTime.format(DateTimeFormatter.ofPattern("dd-MMM-YYYY hh:mm a"));%>
 
-a{
-
-background-color: LightGray;
-color:#990000;
-font-size: large;
-border: 2px black;
-}
-
-a:hover{
-background-color: yellow;
-}
-
-body{
-		background-color: #FFFFF0;
-		
-		background-image: url(https://st.depositphotos.com/1760261/1348/i/950/depositphotos_13481996-stock-photo-bank.jpg);
-		background-position: center top;
-		background-size: 150px;
- 		
-  		
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		}
-		
-</style> -->
-
-<link rel="stylesheet" href="/IBSMvc/style1.css" />
-
-
-<nav>
-
-	<hr />
-	  <a href="signin/home">Home</a>
-
-	 <span>|</span>
-	  
-	 <a href="accounts/fixeddeposit">Fixed Deposit</a>
-
-	 <span>|</span>
-
-	 <a href="accounts/recurringdeposit">Recurring Deposit</a>
-	 
-	 <span>|</span>
-
-	 <a href="home">Signout</a>	 
-
-	<hr />
-
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<a class="navbar-brand" href="/home">IBS Bank</a>
+	<ul class="navbar-nav">
+    	<li class="nav-item active ">
+      		<a class="nav-link" href="/signin/home">Home</a>
+    	</li>
+    	<li class="nav-item ">
+     		 <a class="nav-link" href="/accounts/fixeddeposit">Fixed Deposit</a>
+    	</li> 
+    	<li class="nav-item ">
+      		<a class="nav-link" href="/accounts/recurringdeposit">Recurring Deposit</a>
+   		 </li> 
+   		 <li class="nav-item ">
+      		<a class="nav-link" href="/signin">Sign Out</a>
+   		 </li>
+   		 <li class="nav-item ">
+      		<div class="nav-link disabled" ><%=date %></div>
+   		 </li>
+   </ul>    
 </nav>

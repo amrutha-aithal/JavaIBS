@@ -10,7 +10,6 @@
     <%-- <link rel="stylesheet" href="/css/index.css" /> --%>
 </head>
 <body>
-    <h1>IBS BANK</h1>
     <jsp:include page="/header" />    
     <h2>Welcome to IBS Bank</h2>
     <p>IBS Bank provides features like easy fund transfer, services

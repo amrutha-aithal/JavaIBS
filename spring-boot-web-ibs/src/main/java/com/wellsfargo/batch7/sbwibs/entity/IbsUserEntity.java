@@ -27,6 +27,7 @@ public class IbsUserEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="Custid_generator")
 	@SequenceGenerator(name="Custid_generator", sequenceName="CustId_seq",allocationSize=1,initialValue=1000000000)
 	private Long userId;
+	
 	@Column(name="unm",nullable=false,unique=true)
 	private String userName;
 	

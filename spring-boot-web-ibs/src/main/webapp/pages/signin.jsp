@@ -26,7 +26,7 @@
 	<h2>Customer Login</h2>
 	<section class="container-fluid p-4">
 		<div class="col-sm-4">
-			<form action="/signin/submit" method="POST">
+			<form action="/home" method="POST">
 				<c:if test="${param.error != null}">
 					Invalid Credentials! Access Denied!
 				</c:if>
