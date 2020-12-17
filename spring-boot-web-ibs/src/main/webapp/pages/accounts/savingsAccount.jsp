@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<title>IBS-Fixed Deposit Summary</title>
+<title>IBS-Open Savings Account</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
@@ -15,11 +15,11 @@
 <body>
 	<jsp:include page="/accountsHeader" />
 	<section class="container-fluid p-4">
-				<h2>Fixed Deposit Summary</h2>
+				<h2>Savings Account Summary</h2>
 				<c:choose>
 				<c:when test="${account==null || account.isEmpty() }">
 					<div class="alert alert-info">
-						<strong>No Fixed Deposit Account Available to Display</strong>
+						<strong>No Savings Account Available to Display</strong>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -27,12 +27,9 @@
 						<thead>
 							<tr>
 								<th>Account No</th>
-								<th>Amount Deposited</th>
+								<th>Initial Amount Deposit</th>
 								<th>Interest Rate</th>
 								<th>Deposit Date</th>
-								<th>Maturity Date</th>
-								<th>Interest Received</th>
-								<th>Maturity Amount</th>
 								<th>Balance Amount</th>
 							</tr>
 						</thead>
@@ -43,9 +40,6 @@
 									<td>${c.amountDeposit}</td>
 									<td>${c.interestRate } </td>
 									<td>${c.depositDate} </td>
-									<td>${c.maturityDate} </td>
-									<td>${c.interestReceived} </td>
-									<td>${c.maturityAmount} </td>
 									<td>${c.balanceAmt} </td>
 								</tr>
 							</c:forEach>

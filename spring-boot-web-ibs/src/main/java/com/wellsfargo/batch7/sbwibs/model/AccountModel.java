@@ -12,57 +12,38 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class AccountModel {
 	
-	@NotNull(message="Account Num is mandatory")
-	@NotBlank(message="Account Num can not be null")
-	private String accountNum;
+	private Long accountNum;
 	
-	@NotNull(message="AccountType is mandatory")
-	@NotBlank(message="AccountType can not be null")
 	private String accountType;
 	
-	
-	@NotBlank(message="Amount Deposi can not be null")
 	private Double amountDeposit;
-	
-	
 	private Double interestRate;
 	
+	@DateTimeFormat(iso=ISO.DATE)
+	private LocalDate depositDate;
 	
-	private Date depositDate;
-	
-	
-	private Date maturityDate;
-	
+	@DateTimeFormat(iso=ISO.DATE)
+	private LocalDate maturityDate;
 	
 	private Double interestReceived;
-	
-	
 	private Double timeInYears;
-	
-	
 	private Double timeInMonths;
-	
-	
 	private Double maturityAmount;
-	
-	
 	private Double balanceAmt;
-	
-	
-	private CustomerModel accountHolder;
-	
+	private CustomerModel customer;
 	
 	public AccountModel() {
 		
 	}
 
-	public AccountModel(String accountNum, String accountType, Double amountDeposit, Double interestRate,
-			Date depositDate, Date maturityDate, Double interestReceived, Double timeInYears,
-			Double timeInMonths, Double maturityAmount, Double balanceAmt) {
+	public AccountModel(Long accountNum, String accountType, Double amountDeposit, Double interestRate,
+			LocalDate depositDate, LocalDate maturityDate, Double interestReceived, Double timeInYears,
+			Double timeInMonths, Double maturityAmount, Double balanceAmt,CustomerModel customer) {
 		super();
 		this.accountNum = accountNum;
 		this.accountType = accountType;
@@ -75,13 +56,14 @@ public class AccountModel {
 		this.timeInMonths = timeInMonths;
 		this.maturityAmount = maturityAmount;
 		this.balanceAmt = balanceAmt;
+		this.customer=customer;
 	}
 
-	public String getAccountNum() {
+	public Long getAccountNum() {
 		return accountNum;
 	}
 
-	public void setAccountNum(String accountNum) {
+	public void setAccountNum(Long accountNum) {
 		this.accountNum = accountNum;
 	}
 
@@ -109,19 +91,19 @@ public class AccountModel {
 		this.interestRate = interestRate;
 	}
 
-	public Date getDepositDate() {
+	public LocalDate getDepositDate() {
 		return depositDate;
 	}
 
-	public void setDepositDate(Date depositDate) {
+	public void setDepositDate(LocalDate depositDate) {
 		this.depositDate = depositDate;
 	}
 
-	public Date getMaturityDate() {
+	public LocalDate getMaturityDate() {
 		return maturityDate;
 	}
 
-	public void setMaturityDate(Date maturityDate) {
+	public void setMaturityDate(LocalDate maturityDate) {
 		this.maturityDate = maturityDate;
 	}
 
@@ -165,16 +147,12 @@ public class AccountModel {
 		this.balanceAmt = balanceAmt;
 	}
 
-	public CustomerModel getAccountHolder() {
-		return accountHolder;
+	public CustomerModel getCustomer() {
+		return customer;
 	}
 
-	public void setAccountHolder(CustomerModel accountHolder) {
-		this.accountHolder = accountHolder;
+	public void setCustomer(CustomerModel customer) {
+		this.customer = customer;
 	}
-
-
-	
-
 	
 }

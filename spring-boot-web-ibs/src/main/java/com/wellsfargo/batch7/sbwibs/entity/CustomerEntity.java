@@ -1,18 +1,16 @@
 package com.wellsfargo.batch7.sbwibs.entity;
 
-import java.io.File;
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="ibs_customer")
@@ -34,53 +32,29 @@ public class CustomerEntity extends IbsUserEntity {
 	@Column(name="email",nullable=false,unique=true)
 	private String emailId;
 	
-	@Lob
-	private File data;
-	
 	@Column(name="txnPwd")
 	private String txnPassword;
 	
-	@OneToOne(mappedBy="accountHolder",cascade=CascadeType.ALL)
-	private AccountEntity savAccount;
+	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
+	private Set<AccountEntity> savAccount;
 	
 	
 	public CustomerEntity() {
 		
 	}	
 
-//	public CustomerEntity(Long userId, String userName, String password, String role,String customerName, LocalDate dateOfBirth, String phoneNumber, String address, String emailId,
-//			String txnPassword) {
-//		super(userId, userName, password, role);
-//		this.customerName = customerName;
-//		this.dateOfBirth = dateOfBirth;
-//		this.phoneNumber = phoneNumber;
-//		this.address = address;
-//		this.emailId = emailId;
-//		this.txnPassword = txnPassword;
-//		
-//	}
-
-	public CustomerEntity(Long userId, String userName, String password, String role, String customerName,
-			LocalDate dateOfBirth, String phoneNumber, String address, String emailId, File data, String txnPassword,
-			AccountEntity savAccount) {
+	public CustomerEntity(Long userId, String userName, String password, String role,String customerName, LocalDate dateOfBirth, String phoneNumber, String address, String emailId,
+			String txnPassword) {
 		super(userId, userName, password, role);
 		this.customerName = customerName;
 		this.dateOfBirth = dateOfBirth;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.emailId = emailId;
-		this.data = data;
 		this.txnPassword = txnPassword;
-		this.savAccount = savAccount;
+		
 	}
 
-	public File getData() {
-		return data;
-	}
-
-	public void setData(File data) {
-		this.data = data;
-	}
 
 	public String getCustomerName() {
 		return customerName;
@@ -129,11 +103,11 @@ public class CustomerEntity extends IbsUserEntity {
 	public void setTxnPassword(String txnPassword) {
 		this.txnPassword = txnPassword;
 	}
-	public AccountEntity getSavAccount() {
+	public Set<AccountEntity> getSavAccount() {
 		return savAccount;
 	}
 
-	public void setSavAccount(AccountEntity savAccount) {
+	public void setSavAccount(Set<AccountEntity> savAccount) {
 		this.savAccount = savAccount;
 	}
 

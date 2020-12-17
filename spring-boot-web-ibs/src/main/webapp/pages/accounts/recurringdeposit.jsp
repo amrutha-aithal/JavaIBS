@@ -1,56 +1,58 @@
-
-<%@page import="java.time.LocalDate"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<title>IBS-RecurringDeposits</title>
+<title>IBS-Recurring Deposit Summary</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<jsp:include page="menuaccounts.jsp" />
-	<h3>IBS BANK-Recurring Deposit</h3>
-	<form action="rd" method="POST">
-		<div>
-			<label>Deposit Amount:&emsp;&emsp;&nbsp; </label> <input
-				type="number" name="amountDeposit" required />
-		</div>
-		<br />
-		<div>
-			<label>Interest Rate(%) (0-1): </label> <input type="number"
-				name="interestRate" min="0" max="1" step="0.01" required />
-		</div>
-		<br />
-		<div>
-			<label>Deposit Date:&emsp;&emsp;&emsp;&nbsp; </label> <input
-				type="date" name="depositDate" required />
-		</div>
-		<br />
-		<div>
-			<label>Maturity Date:&emsp;&emsp;&emsp; </label> <input type="date"
-				name="maturityDate" required />
-		</div>
-		<br />
-		<div>
-			<label>Next Deposit Date:&emsp; </label> <input type="date"
-				name="depositDate" required />
-		</div>
-		<br />
-		<div>
-			<button>SUBMIT</button>
-		</div>
-	</form>
+	<jsp:include page="/accountsHeader" />
+	<section class="container-fluid p-4">
+				<h2>Recurring Deposit Summary</h2>
+				<c:choose>
+				<c:when test="${account==null || account.isEmpty() }">
+					<div class="alert alert-info">
+						<strong>No Recurring Deposit Account Available to Display</strong>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Account No</th>
+								<th>Amount Deposited</th>
+								<th>Interest Rate</th>
+								<th>Deposit Date</th>
+								<th>Maturity Date</th>
+								<th>Interest Received</th>
+								<th>Maturity Amount</th>
+								<th>Balance Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="c" items="${account }">
+								<tr>
+									<td>${c.accountNum}</td>
+									<td>${c.amountDeposit}</td>
+									<td>${c.interestRate } </td>
+									<td>${c.depositDate} </td>
+									<td>${c.maturityDate} </td>
+									<td>${c.interestReceived} </td>
+									<td>${c.maturityAmount} </td>
+									<td>${c.balanceAmt} </td>
+								</tr>
+							</c:forEach>
+						</tbody>					
+					</table>
+				</c:otherwise>
+			</c:choose>
+	</section>
 </body>
 </html>

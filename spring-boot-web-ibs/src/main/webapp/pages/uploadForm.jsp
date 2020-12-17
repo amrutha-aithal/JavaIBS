@@ -4,6 +4,8 @@
 <html>
 <head>
 <title>IBS-SignIn</title>
+<head>
+<title>IBS-SignIn</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
@@ -17,32 +19,19 @@
 <body>
 	<jsp:include page="/header" />
 	<section class="container-fluid p-4">
-		<div class="col-sm-3">
-			<h3>Customer Login</h3>
-			<br>
-			<form action="/home" method="POST">
-				<c:if test="${param.error != null}">
-					<div class="btn btn-warning">Invalid Credentials! Access Denied!</div>
-					<br><br>
-				</c:if>
-				
+	<h2>Please upload KYC Documents</h2>
+		<div class="col-sm-4">
+			<form method="POST" enctype="multipart/form-data" action="/upload"
+				class="form-control-inline">
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 				<div class="form-control-group">
-					<label class="form-control-label">UserName: </label> <input
-						class="form-control" type="text" name="userName" />
-				</div>
-				<div class="form-control-group">
-					<label class="form-control-label">Password: </label> <input
-						class="form-control" type="password" name="password" />
-				</div>
-				<br>
-				<button type="submit" class="btn btn-primary">Sign In</button>
-				<a href="forgotPassword" class="btn btn-secondary">Forgot
-					Password</a>
+					<label class="form-control-label">File to upload: <input
+						class="form-control" type="file" name="file" />
+					</label> <input class="btn btn-primary" type="submit" value="Upload" />
 			</form>
 		</div>
-
+		</div>
 	</section>
 </body>
 </html>

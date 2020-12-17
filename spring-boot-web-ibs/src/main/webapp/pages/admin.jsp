@@ -17,15 +17,12 @@
 <body>
 	<jsp:include page="/header" />
 	<section class="container-fluid p-4">
-		<div class="col-sm-3">
-			<h3>Customer Login</h3>
-			<br>
+		<div class="col-sm-4">
+			<h2>Admin Login</h2>
 			<form action="/home" method="POST">
 				<c:if test="${param.error != null}">
-					<div class="btn btn-warning">Invalid Credentials! Access Denied!</div>
-					<br><br>
+					Invalid Credentials! Access Denied!
 				</c:if>
-				
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 				<div class="form-control-group">
@@ -37,12 +34,10 @@
 						class="form-control" type="password" name="password" />
 				</div>
 				<br>
-				<button type="submit" class="btn btn-primary">Sign In</button>
-				<a href="forgotPassword" class="btn btn-secondary">Forgot
-					Password</a>
+				<button class="btn btn-primary">Sign In</button>
 			</form>
 		</div>
-
+		<br>
 	</section>
 </body>
 </html>

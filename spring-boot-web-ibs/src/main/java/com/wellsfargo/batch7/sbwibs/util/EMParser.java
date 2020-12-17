@@ -40,7 +40,7 @@ public class EMParser {
 		target.setMaturityDate(source.getMaturityDate());
 		target.setTimeInMonths(source.getTimeInMonths());
 		target.setTimeInYears(source.getTimeInYears());
-		target.setAccountHolder(parse(source.getAccountHolder()));
+		target.setCustomer(parse(source.getCustomer()));
 		return target;
 	}
 	
@@ -57,7 +57,7 @@ public class EMParser {
 		target.setMaturityDate(source.getMaturityDate());
 		target.setTimeInMonths(source.getTimeInMonths());
 		target.setTimeInYears(source.getTimeInYears());
-		target.setAccountHolder(parse(source.getAccountHolder()));
+		target.setCustomer(parse(source.getCustomer()));
 		return target;
 	}
 	
@@ -73,7 +73,6 @@ public class EMParser {
 		target.setEmailId(source.getEmailId());
 		target.setPhoneNumber(source.getPhoneNumber());
 		target.setTxnPassword(source.getTxnPassword());
-		target.setData(source.getData());
 //		target.setSavAccount(parse(source.getSavAccount()));
 		return target;
 	}
@@ -90,7 +89,6 @@ public class EMParser {
 		target.setEmailId(source.getEmailId());
 		target.setPhoneNumber(source.getPhoneNumber());
 		target.setTxnPassword(source.getTxnPassword());
-		target.setData(source.getData());
 //		target.setSavAccount(parse(source.getSavAccount()));
 		return target;
 	}

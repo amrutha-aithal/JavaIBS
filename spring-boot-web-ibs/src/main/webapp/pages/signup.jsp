@@ -3,21 +3,10 @@
 <html>
 <head>
 <title>IBS-SignUp</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/header" />
@@ -27,7 +16,7 @@
 				<h2>IBS-Sign Up</h2>
 			</div>
 			<form:form action="/signup" method="POST" modelAttribute="customer"
-				class="form-horizontal">
+				class="form-horizontal" id="signup">
 				<div>
 					<form:errors path="*" />
 				</div>
@@ -38,7 +27,8 @@
 				</div>
 				<div class="form-control-group">
 					<form:label path="dateOfBirth" class="form-control-label">Date of Birth</form:label>
-					<form:input path="dateOfBirth" class="form-control" type="date" />
+					<form:input path="dateOfBirth" class="form-control" type="date"
+						onchange="calculateAge()" />
 				</div>
 				<div class="form-control-group">
 					<form:label path="phoneNumber" class="form-control-label">Phone Number</form:label>
@@ -52,15 +42,6 @@
 					<form:label path="address" class="form-control-label">Address</form:label>
 					<form:input path="address" class="form-control" type="text" />
 				</div>
-
-			 	<div class="form-control-group">
-					<form:label path="data" class="form-control-label">Upload KYC Documents</form:label>
-					<form:input path="data" class="form-control" type="file" />
-				</div>
-			<%--		<div class="form-control-group">
-					<form:label path="userId" class="form-control-label">User Id</form:label>
-					<form:input path="userId" class="form-control" type="number" />
-				</div> --%>
 				<div class="form-control-group">
 					<form:label path="userName" class="form-control-label">User Name</form:label>
 					<form:input path="userName" class="form-control" type="text" />
@@ -76,7 +57,8 @@
 				</div>
 				<div class="form-control-group">
 					<form:label path="role" class="form-control-label">Role</form:label>
-					<form:select path="role" class="form-control">
+					<form:select id="role" path="role" class="form-control"
+						onchange="selectUser()">
 						<form:option value="USER">USER</form:option>
 						<form:option value="Service Provider">Service Provider</form:option>
 					</form:select>
@@ -84,10 +66,64 @@
 				<br>
 				<div class="col-sm-10">
 					<button type="submit" class="btn btn-primary">Register</button>
-					<button type="reset" class="btn btn-primary">Reset</button>
+					<button type="reset" class="btn btn-primary" onclick="resetUser()">Reset</button>
 				</div>
 			</form:form>
 		</div>
 	</section>
+	<script>
+		function selectUser() {
+			var selectedUser = document.getElementById("role").value;
+			if (selectedUser == "Service Provider") {
+				var myDiv1 = document.createElement("DIV");
+				myDiv1.setAttribute("class", "form-control-group");
+				myDiv1.setAttribute("id", "myDiv1");
+				document.getElementById("role").insertAdjacentElement(
+						"afterend", myDiv1);
+				var accountNumberLabel = document.createElement("LABEL");
+				accountNumberLabel.innerHTML = "Account Number";
+				accountNumberLabel.setAttribute("for", "accountNo");
+				accountNumberLabel.setAttribute("class", "form-control-label");
+				var accountNumberInput = document.createElement("INPUT");
+				accountNumberInput.setAttribute("id", "accountNo");
+				accountNumberInput.setAttribute("name", "accountNo");
+				accountNumberInput.setAttribute("class", "form-control");
+				myDiv1.appendChild(accountNumberLabel);
+				myDiv1.appendChild(accountNumberInput);
+
+				var ifscCodeLabel = document.createElement("LABEL");
+				ifscCodeLabel.innerHTML = "IFSC Code";
+				ifscCodeLabel.setAttribute("class", "form-control-label");
+				var ifscCodeInput = document.createElement("INPUT");
+				ifscCodeInput.setAttribute("path", "ifscCode");
+				ifscCodeInput.setAttribute("class", "form-control");
+				accountNumberInput.insertAdjacentElement("afterend",
+						ifscCodeLabel);
+				ifscCodeLabel.insertAdjacentElement("afterend", ifscCodeInput);
+
+				document.getElementById("signup").setAttribute("action",
+						"/signupSP")
+
+			} else {
+				document.getElementById("myDiv1").remove();
+				document.getElementById("signup").setAttribute("action",
+						"/signup");
+
+			}
+		}
+		function resetUser() {
+			document.getElementById("myDiv1").remove();
+			document.getElementById("signup").setAttribute("action", "/signup");
+		}
+
+		function calculateAge() {
+			var date = new Date(document.getElementById("dateOfBirth").value);
+			var today = new Date();
+			var age = today.getYear() - date.getYear();
+			if (age < 18)
+				alert("Age must be minimum 18 years or older");
+
+		}
+	</script>
 </body>
 </html>

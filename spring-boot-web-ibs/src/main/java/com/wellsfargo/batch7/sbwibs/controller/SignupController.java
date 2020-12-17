@@ -24,9 +24,6 @@ public class SignupController {
 
 	
 	@Autowired
-	private IbsUserService iuService;
-	
-	@Autowired
 	private UserDetailsServiceImpl userService;
 		
 	@GetMapping
@@ -49,7 +46,7 @@ public class SignupController {
 			mv.addObject("customer",customer);	
 		}else {
 			userService.register(customer);
-			mv = new ModelAndView("redirect:/signin");
+			mv = new ModelAndView("redirect:/upload");
 		}
 		return mv;
 	}

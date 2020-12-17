@@ -37,17 +37,6 @@ public class CustomerModel extends IbsUserModel {
 	@Email(message = "Email Id is not valied")
 	private String emailId;
 
-
-	private File data;
-	
-	public File getData() {
-		return data;
-	}
-
-	public void setData(File data) {
-		this.data = data;
-	}
-
 	private String txnPassword;
 	
 	private AccountModel savAccount;

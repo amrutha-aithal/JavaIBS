@@ -1,25 +1,25 @@
 package com.wellsfargo.batch7.sbwibs.entity;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name="ibs_accounts")
-public class AccountEntity {
+public class AccountEntity implements Comparable<AccountEntity> {
+
 	
 	@Id
 	@GeneratedValue
 	@Column(name="acno")
-	private String accountNum;
+	private Long accountNum;
 	
 	@Column(name="accType")
 	private String accountType;
@@ -31,10 +31,10 @@ public class AccountEntity {
 	private Double interestRate;
 	
 	@Column(name="depositDate")
-	private Date depositDate;
+	private LocalDate depositDate;
 	
 	@Column(name="matutityDate")
-	private Date maturityDate;
+	private LocalDate maturityDate;
 	
 	@Column(name="intReceived")
 	private Double interestReceived;
@@ -51,18 +51,18 @@ public class AccountEntity {
 	@Column(name="balAmt")
 	private Double balanceAmt;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="uid")
-	private CustomerEntity accountHolder;
+	private CustomerEntity customer;
 	
 	
 	public AccountEntity() {
 		
 	}
 
-	public AccountEntity(String accountNum, String accountType, Double amountDeposit, Double interestRate,
-			Date depositDate, Date maturityDate, Double interestReceived, Double timeInYears,
-			Double timeInMonths, Double maturityAmount, Double balanceAmt, CustomerEntity accountHolder) {
+	public AccountEntity(Long accountNum, String accountType, Double amountDeposit, Double interestRate,
+			LocalDate depositDate, LocalDate maturityDate, Double interestReceived, Double timeInYears,
+			Double timeInMonths, Double maturityAmount, Double balanceAmt ,CustomerEntity customer) {
 		super();
 		this.accountNum = accountNum;
 		this.accountType = accountType;
@@ -75,14 +75,14 @@ public class AccountEntity {
 		this.timeInMonths = timeInMonths;
 		this.maturityAmount = maturityAmount;
 		this.balanceAmt = balanceAmt;
-		this.accountHolder = accountHolder;
+		this.customer=customer;
 	}
 
-	public String getAccountNum() {
+	public Long getAccountNum() {
 		return accountNum;
 	}
 
-	public void setAccountNum(String accountNum) {
+	public void setAccountNum(Long accountNum) {
 		this.accountNum = accountNum;
 	}
 
@@ -110,19 +110,19 @@ public class AccountEntity {
 		this.interestRate = interestRate;
 	}
 
-	public Date getDepositDate() {
+	public LocalDate getDepositDate() {
 		return depositDate;
 	}
 
-	public void setDepositDate(Date depositDate) {
+	public void setDepositDate(LocalDate depositDate) {
 		this.depositDate = depositDate;
 	}
 
-	public Date getMaturityDate() {
+	public LocalDate getMaturityDate() {
 		return maturityDate;
 	}
 
-	public void setMaturityDate(Date maturityDate) {
+	public void setMaturityDate(LocalDate maturityDate) {
 		this.maturityDate = maturityDate;
 	}
 
@@ -166,14 +166,28 @@ public class AccountEntity {
 		this.balanceAmt = balanceAmt;
 	}
 
-	public CustomerEntity getAccountHolder() {
-		return accountHolder;
+	public CustomerEntity getCustomer() {
+		return customer;
 	}
 
-	public void setAccountHolder(CustomerEntity accountHolder) {
-		this.accountHolder = accountHolder;
+	public void setCustomer(CustomerEntity customer) {
+		this.customer = customer;
 	}
 
+	@Override
+	public int compareTo(AccountEntity o) {
+		return this.accountNum.compareTo(o.accountNum);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(this.accountNum);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return Objects.equals(this, obj);
+	}
 
 	
 

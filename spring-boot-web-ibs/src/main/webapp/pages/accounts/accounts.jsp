@@ -5,42 +5,40 @@
 <head>
 <title>IBS-Accounts</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-	<jsp:include page="menuaccounts.jsp" />
-	<h2>Savings Account</h2>
-	<h3>Total Account Balance</h3>
+	<jsp:include page="/accountsHeader" />
+	<br>
 	<section class="container-fluid p-4">
-	<div class="col-sm-4">
-		<div class="form-control-group">
-			<label class="form-control-label">Account Number:</label>
-			<label class="form-control"><%
-				String accountNumber = "000123456789";
-			out.println("" + accountNumber);
-			%></label>
+		<div class="jumbotron" align="center">
+			<div class="btn-lg btn-info">IBS offers below accounts with
+				attractive interest rates !!</div>
+				<br><br>
+			 <a href="/accounts/newSavingsAccount"><button type="button" class="btn-lg btn-success">Savings Account</button></a> 
+			<a href="/accounts/newFixedDeposit"><button type="button" class="btn-lg btn-success">Fixed Deposit</button></a>
+			<a href="/accounts/newRecurringDeposit"><button type="button" class="btn-lg btn-success">Recurring Deposit</button></a> <br>
+			<br>
 		</div>
-		<div class="form-control-group">
-			<label class="form-control-label">Amount:</label>
-			<label class="form-control"> <%
-				double totalAmount = 700000;
-			out.println("" + totalAmount);
-			%></label>
-		</div>
-		</div>
+		<%-- <h4>Total Account Balance</h4>
+		<div class="col-sm-4">
+			<div class="form-control-group">
+				<label class="form-control-label">Account Number:</label> <label
+					class="form-control"> <%String accountNumber = "000123456789"; out.println("" + accountNumber); %>
+				</label>
+			</div>
+			<div class="form-control-group">
+				<label class="form-control-label">Amount:</label>
+				<label class="form-control"> <%double totalAmount = 700000;out.println("" + totalAmount);%></label>
+			</div>
+		</div> --%>
 	</section>
 </body>
 </html>

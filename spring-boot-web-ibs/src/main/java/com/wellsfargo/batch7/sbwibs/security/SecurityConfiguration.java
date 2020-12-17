@@ -36,20 +36,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/forgotPassword/**","/resetPassword/**","/upload/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.antMatchers("/").hasAuthority("USER");
+		.antMatchers("/").hasAnyAuthority("USER","BankRep");
 		
-
 		http.formLogin().loginPage("/home").failureUrl("/signin?error=true").defaultSuccessUrl("/signin/home")
 				.usernameParameter("userName").passwordParameter("password");
 
-		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/signout")).logoutSuccessUrl("/");
 		
 		http.exceptionHandling().accessDeniedPage("/pages/access-denied-page.jsp");
 	}
