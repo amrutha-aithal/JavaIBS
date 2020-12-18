@@ -11,7 +11,7 @@
 <body>
 	<jsp:include page="/header1" />
 	<h2>
-		<strong>WELCOME</strong>
+		<strong>WELCOME ${userName }</strong>
 	</h2>
 	<p>IBS Bank provides features like easy fund transfer, services
 		provided for bills etc..</p>

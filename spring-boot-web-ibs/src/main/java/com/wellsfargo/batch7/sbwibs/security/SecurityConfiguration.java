@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.antMatchers("/").hasAnyAuthority("USER","BankRep");
+		.antMatchers("/").hasAnyAuthority("USER","ADMIN");
 		
 		http.formLogin().loginPage("/home").failureUrl("/signin?error=true").defaultSuccessUrl("/signin/home")
 				.usernameParameter("userName").passwordParameter("password");

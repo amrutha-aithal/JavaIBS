@@ -1,5 +1,8 @@
 package com.wellsfargo.batch7.sbwibs.controller;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +24,18 @@ public class SigninController {
 	}
 	
 	@GetMapping("/home")
-	public String homeAction() throws IBSException {
-		return "/signin/home";
+	public ModelAndView homeAction() throws IBSException {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/signin/home");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken) && auth.isAuthenticated()) {			
+			mv.addObject("role",auth.getAuthorities().stream().findFirst().get().getAuthority());
+			mv.addObject("userName",(auth.getName()).toUpperCase());
+		}
+
+		return mv;
 	}
 
 
