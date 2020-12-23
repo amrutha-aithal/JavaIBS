@@ -2,9 +2,11 @@ package com.wellsfargo.batch7.sbwibs.util;
 
 import com.wellsfargo.batch7.sbwibs.entity.AccountEntity;
 import com.wellsfargo.batch7.sbwibs.entity.CustomerEntity;
+import com.wellsfargo.batch7.sbwibs.entity.FundTransferEntity;
 import com.wellsfargo.batch7.sbwibs.entity.IbsUserEntity;
 import com.wellsfargo.batch7.sbwibs.model.AccountModel;
 import com.wellsfargo.batch7.sbwibs.model.CustomerModel;
+import com.wellsfargo.batch7.sbwibs.model.FundTransferModel;
 import com.wellsfargo.batch7.sbwibs.model.IbsUserModel;
 
 public class EMParser {
@@ -91,5 +93,27 @@ public class EMParser {
 		target.setTxnPassword(source.getTxnPassword());
 //		target.setSavAccount(parse(source.getSavAccount()));
 		return target;
+	}
+	
+	public static FundTransferModel parse(FundTransferEntity source) {
+		FundTransferModel target = new FundTransferModel();
+		target.setBeneficiaryAccNum(source.getBeneficiaryAccNum());
+		target.setBeneficiaryName(source.getBeneficiaryName());
+		target.setIfscCode(source.getIfscCode());
+		target.setAmtTransfer(source.getAmtTransfer());		
+		target.setTransactionDate(source.getTransactionDate());
+		target.setAccount(parse(source.getAccount()));
+		return target;		
+	}
+	
+	public static FundTransferEntity parse(FundTransferModel source) {
+		FundTransferEntity target = new FundTransferEntity();
+		target.setBeneficiaryAccNum(source.getBeneficiaryAccNum());
+		target.setBeneficiaryName(source.getBeneficiaryName());
+		target.setIfscCode(source.getIfscCode());
+		target.setAmtTransfer(source.getAmtTransfer());		
+		target.setTransactionDate(source.getTransactionDate());
+		target.setAccount(parse(source.getAccount()));
+		return target;		
 	}
 }
