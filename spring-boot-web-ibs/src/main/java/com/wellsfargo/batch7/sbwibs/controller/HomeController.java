@@ -59,6 +59,21 @@ public class HomeController {
 		return mv;
 	}
 	
+	@RequestMapping("/fundtransferHeader")
+	public ModelAndView fundtransferHeader() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/fundtransfer/fundtransferHeader");
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken) && auth.isAuthenticated()) {			
+			mv.addObject("role",auth.getAuthorities().stream().findFirst().get().getAuthority());
+			mv.addObject("userName",auth.getName());
+		}
+
+		return mv;
+	}
+	
 	@RequestMapping("/accountsHeader")
 	public ModelAndView accountsHeader() {
 		ModelAndView mv = new ModelAndView();

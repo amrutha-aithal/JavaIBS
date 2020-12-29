@@ -31,7 +31,7 @@ public class FundTransferEntity {
 	private LocalDate transactionDate;
 	
 	@ManyToOne
-	@JoinColumn(name="accno")
+	@JoinColumn(name="acno")
 	private AccountEntity account;
 	
 	

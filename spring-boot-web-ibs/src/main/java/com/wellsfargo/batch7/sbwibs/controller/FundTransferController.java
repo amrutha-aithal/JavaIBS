@@ -37,9 +37,12 @@ public class FundTransferController {
 	}
 	
 	@GetMapping("/newBeneficiary")
-	public ModelAndView newBeneficiaryAction() {
+	public ModelAndView newBeneficiaryAction(HttpServletRequest request) throws IBSException {
 		ModelAndView mv = new ModelAndView("fundtransfer/newBeneficiary","beneficiary",new FundTransferModel());
+		Principal principal = request.getUserPrincipal();
+		String userName = principal.getName();
 		mv.addObject("isNew",true);
+		mv.addObject("accounts", accountService.getAllSavingsAccount(userName));
 		return mv;
 	}
 	@PostMapping("/newBeneficiary")

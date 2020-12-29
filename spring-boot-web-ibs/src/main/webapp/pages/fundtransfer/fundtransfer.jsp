@@ -15,7 +15,7 @@
 
 </head>
 <body>
-	<jsp:include page="fundtransferHeader.jsp" />
+	<jsp:include page="/fundtransferHeader" />
 	<br>
 	<section class="container-fluid p-4">
 		<div class="jumbotron" align="center">
