@@ -15,29 +15,110 @@
 
 </head>
 <body>
-	<jsp:include page="/header" />
+	<jsp:include page="/header1" />
 	<section class="container-fluid p-4">
-		<div class="col-sm-4">
-			<h2>Admin Login</h2>
-			<form action="/home" method="POST">
-				<c:if test="${param.error != null}">
-					Invalid Credentials! Access Denied!
-				</c:if>
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-				<div class="form-control-group">
-					<label class="form-control-label">UserName: </label> <input
-						class="form-control" type="text" name="userName" />
-				</div>
-				<div class="form-control-group">
-					<label class="form-control-label">Password: </label> <input
-						class="form-control" type="password" name="password" />
-				</div>
-				<br>
-				<button class="btn btn-primary">Sign In</button>
-			</form>
-		</div>
-		<br>
+		<div>Customer Pending Approval Requests</div>
+		<c:choose>
+				<c:when test="${customers==null || customers.isEmpty() }">
+					<div class="alert alert-info">
+						<strong>No pending approval requests available to display</strong>
+					</div>
+				</c:when>
+				<c:otherwise>
+				<table class="table table-bordered table-striped">
+						<thead>
+							<tr align="center">
+								<th>Full Name</th>
+								<th>Gender</th>
+								<th>Date Of Birth</th>
+								<th>Phone Number</th>
+								<th>Address</th>
+								<th>Email</th>
+								<th>Registration Status</th>
+								<th colspan="2"> Approve / Reject </th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="c" items="${customers }">
+								<tr align="center">
+									<td>${c.customerName}</td>
+									<td>${c.gender}</td>
+									<td>${c.dateOfBirth } </td>
+									<td>${c.phoneNumber} </td>
+									<td>${c.address} </td>
+									<td>${c.emailId} </td>
+									<td>${c.registrationStatus} </td>
+									<td>
+										<a href="/admin/approve?cid=${c.userId }" class="btn btn-sm btn-success">
+											Approve
+										</a>
+									</td>
+									<td>
+										<a href="/admin/reject?cid=${c.userId }" class="btn btn-sm btn-danger">
+											Reject
+										</a>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>					
+					</table>
+				</c:otherwise>
+				</c:choose>
+	</section>
+	<section class="container-fluid p-4">
+		<div>Service Provider Pending Approval Requests</div>
+		<c:choose>
+				<c:when test="${serviceproviders==null || serviceproviders.isEmpty() }">
+					<div class="alert alert-info">
+						<strong>No pending approval requests available to display</strong>
+					</div>
+				</c:when>
+				<c:otherwise>
+				<table class="table table-bordered table-striped">
+						<thead>
+							<tr align="center">
+								<th>Full Name</th>
+								<th>Gender</th>
+								<th>Date Of Birth</th>
+								<th>Phone Number</th>
+								<th>Address</th>
+								<th>Email</th>
+								<th>Registration Status</th>
+								<th>Account Number</th>
+								<th>IFSC Code</th>
+								<th colspan="2"> Approve / Reject </th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="c" items="${serviceproviders }">
+								<tr align="center">
+									<td>${c.customerName}</td>
+									<td>${c.gender}</td>
+									<td>${c.dateOfBirth } </td>
+									<td>${c.phoneNumber} </td>
+									<td>${c.address} </td>
+									<td>${c.emailId} </td>
+									<td>${c.registrationStatus} </td>
+									<td>${c.accountNumber }</td>
+									<td>${c.ifscCode }</td>
+									<td>
+										<a href="/admin/approveSP?spid=${c.userId }" class="btn btn-sm btn-success">
+											Approve
+										</a>
+									</td>
+									<td>
+										<a href="/admin/rejectSP?spid=${c.userId }" class="btn btn-sm btn-danger">
+											Reject
+										</a>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>					
+					</table>
+				</c:otherwise>
+				</c:choose>
 	</section>
 </body>
 </html>

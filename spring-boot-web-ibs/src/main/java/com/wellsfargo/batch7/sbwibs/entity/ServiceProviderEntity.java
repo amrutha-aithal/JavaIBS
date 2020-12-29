@@ -13,55 +13,69 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ibs_customer")
-@Inheritance(strategy=InheritanceType.JOINED)
-public class CustomerEntity extends IbsUserEntity {
-	
-	
-	@Column(name="cname",nullable=false)
+@Table(name = "ibs_serviceprovider")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class ServiceProviderEntity extends IbsUserEntity {
+
+	@Column(name = "spname", nullable = false)
 	private String customerName;
-	
-	@Column(name="gender",nullable=false)
+
+	@Column(name = "gender", nullable = false)
 	private String gender;
-	
-	@Column(name="dob",nullable=false)
+
+	@Column(name = "dob", nullable = false)
 	private LocalDate dateOfBirth;
-	
-	@Column(name="phone",nullable=false,unique=true)
+
+	@Column(name = "phone", nullable = false, unique = true)
 	private String phoneNumber;
 
-	@Column(name="address")
+	@Column(name = "address")
 	private String address;
-	
-	@Column(name="email",nullable=false,unique=true)
+
+	@Column(name = "email", nullable = false, unique = true)
 	private String emailId;
-	
-	@Column(name="txnPwd")
-	private String txnPassword;
-	
-	@Column(name="regStatus")
+
+	@Column(name = "regStatus")
 	private String registrationStatus;
 
-	
-	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
-	private Set<AccountEntity> savAccount;
-	
-	
-	public CustomerEntity() {
-		
-	}	
+	@Column(name = "accNumber")
+	private String accountNumber;
 
-	public CustomerEntity(String customerName, String gender, LocalDate dateOfBirth, String phoneNumber, String address, String emailId,
-			String txnPassword,String registrationStatus) {
-		this.customerName = customerName;
+	@Column(name = "ifscCode")
+	private String ifscCode;
+
+	public ServiceProviderEntity() {
+
+	}
+
+	public ServiceProviderEntity(String spName, String gender, LocalDate dateOfBirth, String phoneNumber,
+			String address, String emailId, String registrationStatus, String accountNumber, String ifscCode) {
+		super();
+		this.customerName = spName;
+		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.emailId = emailId;
-		this.txnPassword = txnPassword;
-		this.gender=gender;
-		this.registrationStatus=registrationStatus;
-		
+		this.registrationStatus = registrationStatus;
+		this.accountNumber = accountNumber;
+		this.ifscCode = ifscCode;
+	}
+
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	public String getIfscCode() {
+		return ifscCode;
+	}
+
+	public void setIfscCode(String ifscCode) {
+		this.ifscCode = ifscCode;
 	}
 
 	public String getRegistrationStatus() {
@@ -120,19 +134,4 @@ public class CustomerEntity extends IbsUserEntity {
 		this.emailId = emailId;
 	}
 
-	public String getTxnPassword() {
-		return txnPassword;
-	}
-
-	public void setTxnPassword(String txnPassword) {
-		this.txnPassword = txnPassword;
-	}
-	public Set<AccountEntity> getSavAccount() {
-		return savAccount;
-	}
-
-	public void setSavAccount(Set<AccountEntity> savAccount) {
-		this.savAccount = savAccount;
-	}
-	
 }

@@ -10,21 +10,21 @@ import javax.validation.constraints.Size;
 
 public class IbsUserModel {
 
-	//@NotNull(message="User ID is mandatory")
+	/*@NotNull(message="User ID is mandatory")*/
 	private Long userId;
 	
-	@NotNull(message="User Name is mandatory")
-	@NotBlank(message="User name can not be null")
+	/*@NotNull(message="User Name is mandatory")
+	@NotBlank(message="User name can not be null")*/
 	private String userName;
 	
-	@NotNull(message="Password is mandatory")
+	/*@NotNull(message="Password is mandatory")
 	@NotBlank(message="Password can not be null")
-	@Size(min=4,max=50,message="Password must be 4 to 50 chars in length")
+	@Size(min=4,max=50,message="Password must be 4 to 50 chars in length")*/
 	private String password;
 	
-	@NotNull(message="Password is mandatory")
+	/*@NotNull(message="Password is mandatory")
 	@NotBlank(message="Password can not be null")
-	@Size(min=4,max=50,message="Password must be 4 to 50 chars in length")
+	@Size(min=4,max=50,message="Password must be 4 to 50 chars in length")*/
 	private String confirmPassword;
 	
 	public String getConfirmPassword() {

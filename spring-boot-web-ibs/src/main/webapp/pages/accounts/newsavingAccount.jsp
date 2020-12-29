@@ -46,35 +46,6 @@
 						Date:</form:label>
 					<form:input class="form-control" type="date" path="depositDate"/>
 				</div>
-				<%-- <div class="form-control-group">
-					<form:label path="timeInYears" class="form-control-label">Select
-						Years </form:label>
-					<form:input class="form-control" type="number" path="timeInYears" min="0" max="15" value="0"
-						onchange="calculateMaturityDate()" />
-				</div>
-				<div class="form-control-group">
-					<form:label path="timeInMonths" class="form-control-label">Select
-						Months </form:label>
-					<form:input class="form-control" type="number" min="0" max="11"
-						path="timeInMonths" value="0" onchange="calculateMaturityDate()" />
-				</div>
-				<div class="form-control-group">
-					<form:label path="maturityDate" class="form-control-label">Maturity
-						Date: </form:label>
-					<form:input class="form-control" type="date" path="maturityDate" />
-				</div>
-				<div class="form-control-group">
-					<form:label path="interestReceived" class="form-control-label">Interest
-						Received </form:label>
-					<form:input class="form-control" type="text"
-						path="interestReceived" readonly="true" />
-				</div>
-				<div class="form-control-group">
-					<form:label path="maturityAmount" class="form-control-label">Maturity
-						Amount </form:label>
-					<form:input class="form-control" type="number" path="maturityAmount" readonly="true" />
-				</div>
-				 --%>
 				 <div class="form-control-group">
 					<form:label path="balanceAmt" class="form-control-label">Balance
 						Amount </form:label>

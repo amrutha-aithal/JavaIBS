@@ -1,8 +1,9 @@
 package com.wellsfargo.batch7.sbwibs.model;
 
 
-import java.io.File;
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -23,6 +24,10 @@ public class CustomerModel extends IbsUserModel {
 	@Past(message="DoB should be a past Date")
 	private LocalDate dateOfBirth;
 	
+	@NotNull(message="Gender is mandatory")
+	@NotBlank(message="Gender can not be null")
+	private String gender;
+	
 	@NotNull(message="Phone num is mandatory")
 	@NotBlank(message="Phone num can not be null")
 	@Pattern(regexp = "[1-9][0-9]{9}",message = "Mobile number must be exactly ten digits")
@@ -34,30 +39,56 @@ public class CustomerModel extends IbsUserModel {
 	
 	@NotNull(message="Email ID is mandatory")
 	@NotBlank(message="Email ID can not be null")
-	@Email(message = "Email Id is not valied")
+	@Email(message = "Email Id is not valid")
 	private String emailId;
 
+	private String registrationStatus;
+	
 	private String txnPassword;
 	
-	private AccountModel savAccount;
+	private AccountModel account;
 	
+	/*
+	 * private List<AccountModel> ac;
+	 * 
+	 * public List<AccountModel> getAc() { return ac; }
+	 * 
+	 * public void setAc(List<AccountModel> ac) { this.ac = ac; }
+	 */
+
 	public CustomerModel() {
 		
 	}	
 
-	public CustomerModel(Long userId, String userName, String password, String role,String customerName, LocalDate dateOfBirth, String phoneNumber, String address, String emailId,
-			String txnPassword) {
-		super(userId, userName, password, role);
+	public CustomerModel(String customerName, LocalDate dateOfBirth, String gender,String phoneNumber, String address, String emailId,
+			String txnPassword,String registrationStatus) {
 		this.customerName = customerName;
 		this.dateOfBirth = dateOfBirth;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.emailId = emailId;
 		this.txnPassword = txnPassword;
-		
+		this.gender=gender;
+		this.registrationStatus=registrationStatus;
 	}
 
 	
+	public String getRegistrationStatus() {
+		return registrationStatus;
+	}
+
+	public void setRegistrationStatus(String registrationStatus) {
+		this.registrationStatus = registrationStatus;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -106,16 +137,12 @@ public class CustomerModel extends IbsUserModel {
 	public void setTxnPassword(String txnPassword) {
 		this.txnPassword = txnPassword;
 	}
-	public AccountModel getSavAccount() {
-		return savAccount;
+	public AccountModel getAccount() {
+		return account;
 	}
 
-	public void setSavAccount(AccountModel savAccount) {
-		this.savAccount = savAccount;
+	public void setAccount(AccountModel account) {
+		this.account = account;
 	}
-
-
-
-	
 	
 }

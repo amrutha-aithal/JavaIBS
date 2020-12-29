@@ -22,9 +22,7 @@
 			<li class="nav-item "><a class="nav-link" href="/signin">Sign
 					In</a></li>
 			<li class="nav-item "><a class="nav-link" href="/signup">Registration</a>
-			</li>
-			<li class="nav-item "><a class="nav-link" href="/admin">Admin</a>
-			</li>
+			
 		</ul>
 		<span class="navbar-text" style="color: white"><%=date%></span>
 	</div>

@@ -11,15 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-/*@Table(name="all_users")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="user_type",discriminatorType=DiscriminatorType.STRING)
-@DiscriminatorValue("usr")
-*/
-
 @Table(name="ibs_user_main")
 @Inheritance(strategy=InheritanceType.JOINED)
-
 public class IbsUserEntity {
 
 	@Id

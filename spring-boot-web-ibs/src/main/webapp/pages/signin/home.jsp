@@ -16,6 +16,7 @@
 	<p>IBS Bank provides features like easy fund transfer, services
 		provided for bills etc..</p>
 	<section class="container-fluid p-4">
+	<div></div>
 		<div class="jumbotron">
 			<a href="/accounts"><button type="button" class="btn-lg btn-dark"
 					data-toggle="tooltip" data-placement="top"

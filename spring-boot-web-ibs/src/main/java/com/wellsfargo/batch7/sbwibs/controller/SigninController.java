@@ -23,6 +23,21 @@ public class SigninController {
 		return mv;
 	}
 	
+	@GetMapping("/sp-home")
+	public ModelAndView sphomeAction() throws IBSException {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/signin/sp-home");
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken) && auth.isAuthenticated()) {			
+			mv.addObject("role",auth.getAuthorities().stream().findFirst().get().getAuthority());
+			mv.addObject("userName",(auth.getName()).toUpperCase());
+		}
+
+		return mv;
+	}
+	
 	@GetMapping("/home")
 	public ModelAndView homeAction() throws IBSException {
 		

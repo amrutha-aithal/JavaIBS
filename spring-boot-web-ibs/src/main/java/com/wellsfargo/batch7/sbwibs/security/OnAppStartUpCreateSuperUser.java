@@ -25,5 +25,7 @@ public class OnAppStartUpCreateSuperUser {
 					"BankRep", encoder.encode("BankRep"),"ADMIN"));
 		}
 	}
+	
+	
 }
 

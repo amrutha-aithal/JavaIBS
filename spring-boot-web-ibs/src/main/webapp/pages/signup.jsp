@@ -3,46 +3,91 @@
 <html>
 <head>
 <title>IBS-SignUp</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="/header" />
 	<section class="container-fluid p-4">
-		<div class="col-sm-4">
-			<div align="center">
-				<h2>IBS-Sign Up</h2>
+		<div style="font-size: 1em" class="col-sm-8">
+			Already Registered ? Click <a href="/signup/trackRegistration">here</a>
+			to check the approval status
+		</div>
+
+		<div align="center" class="col-sm-5">
+			<h2>IBS-Sign Up</h2>
+		</div>
+		<form:form action="/signup" method="POST" modelAttribute="customer"
+			class="form-horizontal" id="signup">
+			<div class="col-sm-3">
+				<form:errors path="*" />
 			</div>
-			<form:form action="/signup" method="POST" modelAttribute="customer"
-				class="form-horizontal" id="signup">
-				<div>
-					<form:errors path="*" />
-				</div>
-				<form:hidden path="txnPassword" value="" />
-				<div class="form-control-group">
-					<form:label path="customerName" class="form-control-label">Full Name</form:label>
+			<form:hidden path="registrationStatus" value="pending" />
+			<div class="form-group row">
+				<form:label path="customerName" class="col-sm-2 col-form-label">Full Name</form:label>
+				<div class="col-sm-3">
 					<form:input path="customerName" class="form-control" type="text" />
 				</div>
-				<div class="form-control-group">
-					<form:label path="dateOfBirth" class="form-control-label">Date of Birth</form:label>
+				<div class="col-sm-3">
+					<form:errors path="customerName" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<span class="col-sm-2">Select Gender</span>
+				<div class="col-sm-3">
+					<input name="gender" id="Male" class="form-input-check"
+						type="radio" value="Male"> <label for="Male"
+						class="form-check-label">Male</label> <input name="gender"
+						id="Female" class="form-input-check" type="radio" value="Female">
+					<label for="Female" class="form-check-label">Female</label>
+				</div>
+			</div>
+			<div class="form-group row">
+				<form:label path="dateOfBirth" class="col-sm-2 col-form-label">Date of Birth / Age :<span
+						id="age"></span>
+				</form:label>
+				<div class="col-sm-3">
 					<form:input path="dateOfBirth" class="form-control" type="date"
 						onchange="calculateAge()" />
 				</div>
-				<div class="form-control-group">
-					<form:label path="phoneNumber" class="form-control-label">Phone Number</form:label>
+				<div class="col-sm-3">
+					<form:errors path="dateOfBirth" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<form:label path="phoneNumber" class="col-sm-2 col-form-label">Phone Number</form:label>
+				<div class="col-sm-3">
 					<form:input path="phoneNumber" class="form-control" type="text" />
 				</div>
-				<div class="form-control-group">
-					<form:label path="emailId" class="form-control-label">Email ID</form:label>
-					<form:input path="emailId" class="form-control" type="text" />
+				<div class="col-sm-3">
+					<form:errors path="phoneNumber" />
 				</div>
-				<div class="form-control-group">
-					<form:label path="address" class="form-control-label">Address</form:label>
+			</div>
+			<div class="form-group row">
+				<form:label path="emailId" class="col-sm-2 col-form-label">Email ID</form:label>
+				<div class="col-sm-3">
+					<form:input path="emailId" class="form-control" type="email" />
+				</div>
+				<div class="col-sm-3">
+					<form:errors path="emailId" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<form:label path="address" class="col-sm-2 col-form-label">Address</form:label>
+				<div class="col-sm-3">
 					<form:input path="address" class="form-control" type="text" />
 				</div>
-				<div class="form-control-group">
+				<div class="col-sm-3">
+					<form:errors path="address" />
+				</div>
+			</div>
+			<%-- <div class="form-control-group">
 					<form:label path="userName" class="form-control-label">User Name</form:label>
 					<form:input path="userName" class="form-control" type="text" />
 				</div>
@@ -53,66 +98,73 @@
 				<div class="form-control-group">
 					<form:label path="confirmPassword" class="form-control-label">Confirm Password</form:label>
 					<form:input path="confirmPassword" class="form-control"
-						type="password" />
-				</div>
-				<div class="form-control-group">
-					<form:label path="role" class="form-control-label">Role</form:label>
-					<form:select id="role" path="role" class="form-control"
-						onchange="selectUser()">
+						type="password" /> 
+				</div>--%>
+			<div class="form-group row" id="roleDiv">
+				<form:label path="role" class="col-sm-2 col-form-label">Role</form:label>
+				<div class="col-sm-3">
+					<form:select id="role" path="role" class="form-control">
+					<form:option value="--Select--">--Select--</form:option>
 						<form:option value="USER">USER</form:option>
 						<form:option value="Service Provider">Service Provider</form:option>
 					</form:select>
 				</div>
-				<br>
-				<div class="col-sm-10">
+			</div>
+			<br>
+			<div class="form-group row">
+				<div class="col-sm-2" align="center">
 					<button type="submit" class="btn btn-primary">Register</button>
+				</div>
+				<div class="col-sm-2" align="center">
 					<button type="reset" class="btn btn-primary" onclick="resetUser()">Reset</button>
 				</div>
-			</form:form>
-		</div>
+			</div>
+		</form:form>
 	</section>
-	<script>
-		function selectUser() {
-			var selectedUser = document.getElementById("role").value;
-			if (selectedUser == "Service Provider") {
-				var myDiv1 = document.createElement("DIV");
-				myDiv1.setAttribute("class", "form-control-group");
-				myDiv1.setAttribute("id", "myDiv1");
-				document.getElementById("role").insertAdjacentElement(
-						"afterend", myDiv1);
-				var accountNumberLabel = document.createElement("LABEL");
-				accountNumberLabel.innerHTML = "Account Number";
-				accountNumberLabel.setAttribute("for", "accountNo");
-				accountNumberLabel.setAttribute("class", "form-control-label");
-				var accountNumberInput = document.createElement("INPUT");
-				accountNumberInput.setAttribute("id", "accountNo");
-				accountNumberInput.setAttribute("name", "accountNo");
-				accountNumberInput.setAttribute("class", "form-control");
-				myDiv1.appendChild(accountNumberLabel);
-				myDiv1.appendChild(accountNumberInput);
+	<script type="text/javascript">
+		$("#roleDiv")
+				.bind(
+						"change",
+						function selectUser1() {
+							if ($('#role').val() == "Service Provider") {
+								if($('#myDiv1').length) {
+									document.getElementById("myDiv1").remove();
+									}
+								var $newdiv1 = $('<div class="form-group row" id="myDiv1"><label for="accountNumber" class="col-sm-2 col-form-label">Account Number</label><div class="col-sm-3"><spring:bind path="accountNumber"><input name="accountNumber" class="form-control" type="text" /></spring:bind></div></div>');
+								var $newdiv2 = $('<div class="form-group row" id="myDiv3"><label for="ifscCode" class="col-sm-2 col-form-label">IFSC Code</label><div class="col-sm-3"><input name="ifscCode" class="form-control" type="text" /></div></div>');
+								$("#roleDiv").after($newdiv1, $newdiv2);
+								document.getElementById("signup").setAttribute(
+										"action", "/signup/serviceprovider");
+								document.getElementById("customerName").setAttribute(
+										"id", "spName");
+								document.getElementById("customerName").setAttribute(
+										"name", "spName");
+								
+							}if ($('#role').val() == "USER") {
+								if($('#myDiv1').length) {
+									document.getElementById("myDiv1").remove();
+									document.getElementById("myDiv3").remove();
+									}
+								var $newdiv1 = $('<div class="form-group row" id="myDiv1"><label for="account.accountType" class="col-sm-2 col-form-label">Account Type</label><div class="col-sm-8"><spring:bind path="accountType"><input name="account.accountType" id="savings" class="form-input-check" type="checkbox" value="savings" checked/>Savings Account<br><input name="accountType" id="fixeddeposit" class="form-input-check" type="checkbox" value="fixeddeposit"/>Fixed Deposit<br><input name="accountType" id="recurringdeposit" class="form-input-check" type="checkbox" value="recurringdeposit"/>Recurring Deposit</spring:bind></div></div>');
+								$("#roleDiv").after($newdiv1);
+								document.getElementById("signup").setAttribute(
+										"action", "/signup");
+								document.getElementById("spName").setAttribute(
+										"id", "customerName");
+								document.getElementById("spName").setAttribute(
+										"name", "customerName");
+							}else {
+								document.getElementById("myDiv1").remove();
+								document.getElementById("myDiv3").remove();
+								document.getElementById("signup").setAttribute("action",
+										"/signup");
 
-				var ifscCodeLabel = document.createElement("LABEL");
-				ifscCodeLabel.innerHTML = "IFSC Code";
-				ifscCodeLabel.setAttribute("class", "form-control-label");
-				var ifscCodeInput = document.createElement("INPUT");
-				ifscCodeInput.setAttribute("path", "ifscCode");
-				ifscCodeInput.setAttribute("class", "form-control");
-				accountNumberInput.insertAdjacentElement("afterend",
-						ifscCodeLabel);
-				ifscCodeLabel.insertAdjacentElement("afterend", ifscCodeInput);
-
-				document.getElementById("signup").setAttribute("action",
-						"/signupSP")
-
-			} else {
-				document.getElementById("myDiv1").remove();
-				document.getElementById("signup").setAttribute("action",
-						"/signup");
-
-			}
-		}
+							}
+						});
+		
 		function resetUser() {
 			document.getElementById("myDiv1").remove();
+			document.getElementById("myDiv3").remove();
 			document.getElementById("signup").setAttribute("action", "/signup");
 		}
 
@@ -120,8 +172,10 @@
 			var date = new Date(document.getElementById("dateOfBirth").value);
 			var today = new Date();
 			var age = today.getYear() - date.getYear();
-			if (age < 18)
-				alert("Age must be minimum 18 years or older");
+			document.getElementById("age").innerHTML = age.toString();
+			var minAge = today.getYear() - 18;
+			document.getElementById("dateOfBirth").setAttribute("min",
+					date(minAge));
 
 		}
 	</script>

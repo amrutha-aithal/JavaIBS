@@ -16,9 +16,9 @@
 </head>
 <body>
 	<jsp:include page="/header" />
-	<section class="container-fluid p-4">
+	<section class="container-fluid p-4" >
 		<div class="col-sm-3">
-			<h3>Customer Login</h3>
+			<div class="btn-sm btn-light" align="center"><h3>Login</h3></div>
 			<br>
 			<form action="/home" method="POST">
 				<c:if test="${param.error != null}">

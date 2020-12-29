@@ -24,6 +24,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 		
 	}
+	@Autowired
+	private IBSAuthenticationSuccessHandler successHandler;
+	
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -36,17 +39,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/forgotPassword/**","/resetPassword/**","/upload/**");
+		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**","/signup/trackRegistration/**","/forgotPassword/**","/resetPassword/**","/upload/**");
 	}
+	
+	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.antMatchers("/").hasAnyAuthority("USER","ADMIN");
+		.antMatchers("/").permitAll();
+//		.antMatchers("/home").hasAnyAuthority("USER","ADMIN").antMatchers("/signin/home").hasAuthority("USER").anyRequest().authenticated();
 		
-		http.formLogin().loginPage("/home").failureUrl("/signin?error=true").defaultSuccessUrl("/signin/home")
-				.usernameParameter("userName").passwordParameter("password");
+//		http.formLogin().successHandler(successHandler).loginPage("/home").failureUrl("/signin?error=true").defaultSuccessUrl("/signin/home")
+//				.usernameParameter("userName").passwordParameter("password");
+		
+		http.formLogin().successHandler(successHandler).loginPage("/home").permitAll().failureUrl("/signin?error=true").usernameParameter("userName").passwordParameter("password");
 
 		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/signout")).logoutSuccessUrl("/");
 		

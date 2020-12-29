@@ -4,10 +4,12 @@ import com.wellsfargo.batch7.sbwibs.entity.AccountEntity;
 import com.wellsfargo.batch7.sbwibs.entity.CustomerEntity;
 import com.wellsfargo.batch7.sbwibs.entity.FundTransferEntity;
 import com.wellsfargo.batch7.sbwibs.entity.IbsUserEntity;
+import com.wellsfargo.batch7.sbwibs.entity.ServiceProviderEntity;
 import com.wellsfargo.batch7.sbwibs.model.AccountModel;
 import com.wellsfargo.batch7.sbwibs.model.CustomerModel;
 import com.wellsfargo.batch7.sbwibs.model.FundTransferModel;
 import com.wellsfargo.batch7.sbwibs.model.IbsUserModel;
+import com.wellsfargo.batch7.sbwibs.model.ServiceProviderModel;
 
 public class EMParser {
 	
@@ -75,7 +77,45 @@ public class EMParser {
 		target.setEmailId(source.getEmailId());
 		target.setPhoneNumber(source.getPhoneNumber());
 		target.setTxnPassword(source.getTxnPassword());
-//		target.setSavAccount(parse(source.getSavAccount()));
+		target.setGender(source.getGender());
+		target.setRegistrationStatus(source.getRegistrationStatus());
+//		target.setSavAccount(source.getSavAccount());
+		return target;
+	}
+	
+	public static ServiceProviderModel parse(ServiceProviderEntity source) {
+		ServiceProviderModel target = new ServiceProviderModel();
+		target.setUserId(source.getUserId());
+		target.setUserName(source.getUserName());
+		target.setPassword(source.getPassword());
+		target.setRole(source.getRole());
+		target.setAddress(source.getAddress());
+		target.setCustomerName(source.getCustomerName());
+		target.setDateOfBirth(source.getDateOfBirth());
+		target.setEmailId(source.getEmailId());
+		target.setPhoneNumber(source.getPhoneNumber());
+		target.setGender(source.getGender());
+		target.setRegistrationStatus(source.getRegistrationStatus());
+		target.setAccountNumber(source.getAccountNumber());
+		target.setIfscCode(source.getIfscCode());
+		return target;
+	}
+	
+	public static ServiceProviderEntity parse(ServiceProviderModel source) {
+		ServiceProviderEntity target = new ServiceProviderEntity();
+		target.setUserId(source.getUserId());
+		target.setUserName(source.getUserName());
+		target.setPassword(source.getPassword());
+		target.setRole(source.getRole());
+		target.setAddress(source.getAddress());
+		target.setCustomerName(source.getCustomerName());
+		target.setDateOfBirth(source.getDateOfBirth());
+		target.setEmailId(source.getEmailId());
+		target.setPhoneNumber(source.getPhoneNumber());
+		target.setGender(source.getGender());
+		target.setRegistrationStatus(source.getRegistrationStatus());
+		target.setAccountNumber(source.getAccountNumber());
+		target.setIfscCode(source.getIfscCode());
 		return target;
 	}
 	
@@ -91,6 +131,8 @@ public class EMParser {
 		target.setEmailId(source.getEmailId());
 		target.setPhoneNumber(source.getPhoneNumber());
 		target.setTxnPassword(source.getTxnPassword());
+		target.setGender(source.getGender());
+		target.setRegistrationStatus(source.getRegistrationStatus());
 //		target.setSavAccount(parse(source.getSavAccount()));
 		return target;
 	}
