@@ -61,6 +61,10 @@ public class FundTransferServiceImpl implements FundTransferService {
 			if (!fundTransferRepo.existsById(beneficiary.getBeneficiaryAccNum())) {
 				throw new IBSException("Beneficiary Acc#" + beneficiary.getBeneficiaryAccNum() + " doesn't exists");
 			}
+			Optional<AccountEntity> accounts = accountRepo.findById(beneficiary.getAccount().getAccountNum());
+			AccountEntity account = accounts.get();
+
+			beneficiary.setAccount(EMParser.parse(account));
 			beneficiary = EMParser.parse(fundTransferRepo.save(EMParser.parse(beneficiary)));
 		}
 		return beneficiary;
@@ -76,5 +80,31 @@ public class FundTransferServiceImpl implements FundTransferService {
 	public List<FundTransferModel> getAll() throws IBSException {
 		return fundTransferRepo.findAll().stream().map(e -> EMParser.parse(e)).collect(Collectors.toList());
 	}
+
+	@Override
+	public FundTransferModel get(long benefAccNum) throws IBSException {
+		if(!fundTransferRepo.existsById(benefAccNum)) {
+			throw new IBSException("Beneficiary Acc#"+benefAccNum+" does not exists");
+		}
+		return EMParser.parse(fundTransferRepo.findById(benefAccNum).get());
+	}
+	
+	@Transactional
+	@Override
+	public FundTransferModel transferFund(@Valid FundTransferModel fund) throws IBSException {
+		Optional<AccountEntity> accounts = accountRepo.findById(fund.getAccount().getAccountNum());
+		AccountEntity account = accounts.get();
+		fund.setAccount(EMParser.parse(account));
+		fund = EMParser.parse(fundTransferRepo.save(EMParser.parse(fund)));
+//		fund.setAmtTransfer(EMParser.parse(account));
+		return fund;
+	}
+
+	@Override
+	public List<FundTransferModel> getAllTransactions() throws IBSException {
+		return fundTransferRepo.findAll().stream().map(e -> EMParser.parse(e)).collect(Collectors.toList());
+	}
+		
+	
 
 }

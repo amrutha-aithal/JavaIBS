@@ -1,17 +1,20 @@
 package com.wellsfargo.batch7.sbwibs.entity;
 
 import java.time.LocalDate;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name="ibs_fund_transfer")
+@Table(name="ibs_beneficiary")
 public class FundTransferEntity {
 	
 	@Id
@@ -22,17 +25,14 @@ public class FundTransferEntity {
 	private String beneficiaryName;
 	
 	@Column(name="ifsc")
-	private String ifscCode;
-	
-	@Column(name="amtTransferred")
-	private Double amtTransfer;
-	
-	@Column(name="txnDate")
-	private LocalDate transactionDate;
+	private String ifscCode;	
 	
 	@ManyToOne
 	@JoinColumn(name="acno")
 	private AccountEntity account;
+	
+	@OneToMany(mappedBy="beneficiary",cascade=CascadeType.ALL)
+	private Set<FundTransactionEntity> funds;
 	
 	
 	public FundTransferEntity() {
@@ -42,13 +42,11 @@ public class FundTransferEntity {
 
 	public FundTransferEntity(
 			Long beneficiaryAccNum,String beneficiaryName,String ifscCode,
-			Double amtTransfer, LocalDate transactionDate, AccountEntity account) {
+			AccountEntity account) {
 		super();
 		this.beneficiaryAccNum = beneficiaryAccNum;
 		this.beneficiaryName = beneficiaryName;
 		this.ifscCode = ifscCode;
-		this.amtTransfer = amtTransfer;
-		this.transactionDate = transactionDate;
 		this.account = account;
 	}
 
@@ -82,31 +80,9 @@ public class FundTransferEntity {
 		this.ifscCode = ifscCode;
 	}
 
-
-	public Double getAmtTransfer() {
-		return amtTransfer;
-	}
-
-
-	public void setAmtTransfer(Double amtTransfer) {
-		this.amtTransfer = amtTransfer;
-	}
-
-
-	public LocalDate getTransactionDate() {
-		return transactionDate;
-	}
-
-
-	public void setTransactionDate(LocalDate transactionDate) {
-		this.transactionDate = transactionDate;
-	}
-
-
 	public AccountEntity getAccount() {
 		return account;
 	}
-
 
 	public void setAccount(AccountEntity account) {
 		this.account = account;

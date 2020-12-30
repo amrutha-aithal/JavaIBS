@@ -23,7 +23,7 @@
 				<br><br>
 			 <a href="/fundtransfer/newBeneficiary"><button type="button" class="btn-lg btn-success">Add Beneficiary</button></a> 
 			<%-- <a href="/fundTransfer/editBeneficiary"><button type="button" class="btn-lg btn-success">Modify Beneficiary</button></a>--%>
-			<a href="/fundtransfer/transferAmount"><button type="button" class="btn-lg btn-success">Transfer Amount</button></a> <br>
+			<a href="/fundtransfer/amountTransfer"><button type="button" class="btn-lg btn-success">Transfer Amount</button></a> <br>
 			<br>
 		</div>
 		<%-- <h4>Total Account Balance</h4>

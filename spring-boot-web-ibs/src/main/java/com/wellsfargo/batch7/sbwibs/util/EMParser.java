@@ -2,6 +2,7 @@ package com.wellsfargo.batch7.sbwibs.util;
 
 import com.wellsfargo.batch7.sbwibs.entity.AccountEntity;
 import com.wellsfargo.batch7.sbwibs.entity.CustomerEntity;
+import com.wellsfargo.batch7.sbwibs.entity.FundTransactionEntity;
 import com.wellsfargo.batch7.sbwibs.entity.FundTransferEntity;
 import com.wellsfargo.batch7.sbwibs.entity.IbsUserEntity;
 import com.wellsfargo.batch7.sbwibs.entity.ServiceProviderEntity;
@@ -141,9 +142,7 @@ public class EMParser {
 		FundTransferModel target = new FundTransferModel();
 		target.setBeneficiaryAccNum(source.getBeneficiaryAccNum());
 		target.setBeneficiaryName(source.getBeneficiaryName());
-		target.setIfscCode(source.getIfscCode());
-		target.setAmtTransfer(source.getAmtTransfer());		
-		target.setTransactionDate(source.getTransactionDate());
+		target.setIfscCode(source.getIfscCode());		
 		target.setAccount(parse(source.getAccount()));
 		return target;		
 	}
@@ -152,10 +151,16 @@ public class EMParser {
 		FundTransferEntity target = new FundTransferEntity();
 		target.setBeneficiaryAccNum(source.getBeneficiaryAccNum());
 		target.setBeneficiaryName(source.getBeneficiaryName());
-		target.setIfscCode(source.getIfscCode());
-		target.setAmtTransfer(source.getAmtTransfer());		
-		target.setTransactionDate(source.getTransactionDate());
+		target.setIfscCode(source.getIfscCode());		
 		target.setAccount(parse(source.getAccount()));
+		return target;		
+	}
+	public static FundTransactionEntity parse1(FundTransferModel source) {
+		FundTransactionEntity target = new FundTransactionEntity();
+		target.setAmtTransfer(source.getAmtTransfer());		
+		target.setAccount(parse(source.getAccount()));
+		target.setTransactionDate(source.getTransactionDate());
+//		target.setBeneficiary(parse1(source.getBeneficiaryAccNum());
 		return target;		
 	}
 }

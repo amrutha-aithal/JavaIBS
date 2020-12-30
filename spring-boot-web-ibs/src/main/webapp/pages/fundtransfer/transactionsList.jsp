@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<title>IBS-Beneficiaries</title>
+<title>IBS-Fund Transactions</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
@@ -15,11 +15,11 @@
 <body>
 	<jsp:include page="/fundtransferHeader" />
 	<section class="container-fluid p-4">
-				<h2>Beneficiary Details</h2>
+				<h2>Transaction Details</h2>
 				<c:choose>
-				<c:when test="${beneficiary==null || beneficiary.isEmpty() }">
+				<c:when test="${fund==null || fund.isEmpty() }">
 					<div class="alert alert-info">
-						<strong>No Beneficiary is added to Display</strong>
+						<strong>No Transactions found to display</strong>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -28,22 +28,17 @@
 							<tr>
 								<th>User Account #</th>
 								<th>Beneficiary Account #</th>
-								<th>Beneficiary Name</th>
-								<th>IFSC Code</th>								
+								<th>Fund Transferred</th>
+								<th>Transaction Date</th>								
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="c" items="${beneficiary }">
+							<c:forEach var="c" items="${fund }">
 								<tr>
 									<td>${c.account.accountNum }</td>
 									<td>${c.beneficiaryAccNum}</td>
-									<td>${c.beneficiaryName}</td>
-									<td>${c.ifscCode } </td>
-									<td>
-										<a href="/fundtransfer/edit?benefAccNum=${c.beneficiaryAccNum }" class="btn btn-sm btn-info">
-											EDIT
-										</a>
-									</td>																		
+									<td>${c.amtTransfer}</td>
+									<td>${c.transactionDate} </td>																											
 								</tr>
 							</c:forEach>
 						</tbody>					
