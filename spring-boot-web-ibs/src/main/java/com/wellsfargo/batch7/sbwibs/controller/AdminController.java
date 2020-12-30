@@ -29,11 +29,15 @@ public class AdminController {
 
 	@GetMapping
 	public ModelAndView savingsAccountAction(HttpServletRequest request) throws IBSException {
-//		Principal principal=request.getUserPrincipal();
-//		String currentUserName=principal.getName();
 		List<CustomerModel> customers=customerService.getAllPendingRequests();
 		ModelAndView mv = new ModelAndView("/admin","customers",customers);
 		mv.addObject("serviceproviders",spService.getAllPendingRequests());
+		return mv;
+	}
+	
+	@GetMapping("/bankservices")
+	public ModelAndView bankServicesAction() throws IBSException {
+		ModelAndView mv = new ModelAndView();
 		return mv;
 	}
 

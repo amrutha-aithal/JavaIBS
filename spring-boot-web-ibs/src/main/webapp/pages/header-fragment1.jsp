@@ -21,7 +21,7 @@
 			<c:choose>
 				<c:when test="${role=='ADMIN' }">
 					<li class="nav-item active "><a class="nav-link" href="/admin">Home</a></li>
-					<li class="nav-item "><a class="nav-link" href="/bankservices">Bank
+					<li class="nav-item "><a class="nav-link" href="/admin/bankservices">Bank
 							Services</a></li>
 					<li class="nav-item "><a class="nav-link" href="/signout">Sign Out</a></li>
 				</c:when>
