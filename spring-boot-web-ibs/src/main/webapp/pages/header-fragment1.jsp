@@ -27,8 +27,7 @@
 				</c:when>
 				<c:when test="${role=='SP' || role=='NEWSP' }">
 					<li class="nav-item active "><a class="nav-link" href="/sp-home">Home</a></li>
-					<li class="nav-item "><a class="nav-link" href="/bankservices">Bank
-							Services</a></li>
+					<li class="nav-item "><a class="nav-link" href="/bankservices/statements">Statements</a></li>
 					<li class="nav-item "><a class="nav-link" href="/signout">Sign Out</a></li>
 				</c:when>
 				<c:otherwise>
@@ -38,8 +37,8 @@
 					</li>
 					<li class="nav-item "><a class="nav-link" href="/fundtransfer">Fund
 							Transfer</a></li>
-					<li class="nav-item "><a class="nav-link" href="/bankservices">Bank
-							Services</a></li>
+					<li class="nav-item "><a class="nav-link" href="/bankservices">Bill Payments</a></li>
+										<li class="nav-item "><a class="nav-link" href="/fundtransfer/transactionsList">Statements</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"

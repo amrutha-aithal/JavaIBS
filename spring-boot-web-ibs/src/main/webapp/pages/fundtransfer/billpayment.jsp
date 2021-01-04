@@ -15,11 +15,10 @@
 <body>
 	<jsp:include page="/fundtransferHeader" />
 	<section class="container-fluid p-4">
-		<h3>Fund Transfer to Beneficiary</h3>
-
+		<h3>Bill Payment Services</h3>
 		<div class="col-sm-4">
-			<form:form action="/fundtransfer/amountTransfer " method="POST"
-				modelAttribute="fund" class="form">
+			<form:form action="/bankservices/billpayment" method="POST"
+				modelAttribute="billPay" class="form">
 				<div class="form-control-group">
 					<form:errors path="*"></form:errors>
 				</div>
@@ -34,29 +33,36 @@
 					</form:select>
 				</div>
 				<div class="form-control-group">
-					<form:label path="beneficiaryName" class="form-control-label">Beneficiary Name</form:label>
-					<form:select path="beneficiaryName" class="form-control" onchange="selectedIndexBeneficiary()">
-						<form:options items="${fundTransfers}"
-							itemLabel="beneficiaryName" itemValue="beneficiaryName" />
+					<form:label path="serviceprovider.customerName"
+						class="form-control-label">Service Provider</form:label>
+					<form:select path="serviceprovider.customerName"
+						class="form-control" onchange="selectedIndexBeneficiary()">
+						<form:options items="${serviceproviders}" itemLabel="customerName"
+							itemValue="customerName" />
 					</form:select>
 				</div>
 				<div class="form-control-group">
-					<form:label path="beneficiaryAccNum" class="form-control-label">Beneficiary Account #</form:label>
-					<form:select path="beneficiaryAccNum" class="form-control" readonly="true">
-						<form:options items="${fundTransfers}"
-							itemLabel="beneficiaryAccNum" itemValue="beneficiaryAccNum" />
+					<form:label path="serviceprovider.accountNumber"
+						class="form-control-label">Service Provider Account #</form:label>
+					<form:select path="serviceprovider.accountNumber"
+						class="form-control" readonly="true">
+						<form:options items="${serviceproviders}"
+							itemLabel="accountNumber" itemValue="accountNumber" />
 					</form:select>
 				</div>
 				<div class="form-control-group">
-					<form:label path="ifscCode" class="form-control-label">IFSC Code</form:label>
-					<form:select path="ifscCode" class="form-control" readonly="true">
-						<form:options items="${fundTransfers}"
-							itemLabel="ifscCode" itemValue="ifscCode" />
+					<form:label path="serviceprovider.ifscCode"
+						class="form-control-label">IFSC Code</form:label>
+					<form:select path="serviceprovider.ifscCode" class="form-control"
+						readonly="true">
+						<form:options items="${serviceproviders}" itemLabel="ifscCode"
+							itemValue="ifscCode" />
 					</form:select>
 				</div>
 				<div class="form-control-group">
 					<form:label path="amtTransfer" class="form-control-label">Enter Amount: </form:label>
-					<form:input path="amtTransfer" class="form-control" type="number" onchange="selectedIndexNumber()" />
+					<form:input path="amtTransfer" class="form-control" type="number"
+						onchange="selectedIndexNumber()" />
 				</div>
 				<div class="form-control-group">
 					<form:label path="transactionDate" class="form-control-label">Transaction Date: </form:label>
@@ -68,7 +74,7 @@
 					<form:select path="account.balanceAmt" class="form-control"
 						readonly="true">
 						<form:options items="${accounts}" itemLabel="balanceAmt"
-							itemValue="balanceAmt" min="0"/>
+							itemValue="balanceAmt" min="0" />
 					</form:select>
 				</div>
 				<br>
@@ -77,22 +83,23 @@
 				</div>
 			</form:form>
 		</div>
+
 	</section>
 	<script type="text/javascript">
-		
 		function selectedIndexNumber() {
 			var index = document.getElementById("account.accountNum").selectedIndex;
-			document.getElementById("account.balanceAmt").selectedIndex=index;
-			var maxAvailable=document.getElementById("account.balanceAmt").value;
-			document.getElementById("amtTransfer").setAttribute("max", maxAvailable);
-			
-			}
+			document.getElementById("account.balanceAmt").selectedIndex = index;
+			var maxAvailable = document.getElementById("account.balanceAmt").value;
+			document.getElementById("amtTransfer").setAttribute("max",
+					maxAvailable);
+
+		}
 
 		function selectedIndexBeneficiary() {
-			var index = document.getElementById("beneficiaryName").selectedIndex;
-			document.getElementById("beneficiaryAccNum").selectedIndex=index;
-			document.getElementById("ifscCode").selectedIndex=index;
-			
+			var index = document.getElementById("customerName").selectedIndex;
+			document.getElementById("accountNumber").selectedIndex = index;
+			document.getElementById("ifscCode").selectedIndex = index;
+
 		}
 	</script>
 </body>

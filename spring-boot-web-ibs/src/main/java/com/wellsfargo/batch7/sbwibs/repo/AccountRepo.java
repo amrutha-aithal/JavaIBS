@@ -1,6 +1,7 @@
 package com.wellsfargo.batch7.sbwibs.repo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,6 +24,8 @@ public interface AccountRepo extends JpaRepository<AccountEntity, Long> {
 
 	@Query(value="select * from ibs_accounts a where a.acc_type='recurringdeposit' and a.uid=:customerId",nativeQuery = true)
 	List<AccountEntity> findAllRecurringDepositByCustomer(@Param("customerId")Long customerId);
+
+	Optional<AccountEntity> findAllByCustomer(Long userId);
 	
 }
 

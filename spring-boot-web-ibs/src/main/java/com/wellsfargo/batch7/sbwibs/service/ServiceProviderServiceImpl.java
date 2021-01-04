@@ -3,6 +3,7 @@ package com.wellsfargo.batch7.sbwibs.service;
 import com.wellsfargo.batch7.sbwibs.entity.ServiceProviderEntity;
 import com.wellsfargo.batch7.sbwibs.exception.IBSException;
 import com.wellsfargo.batch7.sbwibs.model.CustomerModel;
+import com.wellsfargo.batch7.sbwibs.model.FundTransferModel;
 import com.wellsfargo.batch7.sbwibs.model.ServiceProviderModel;
 import com.wellsfargo.batch7.sbwibs.repo.ServiceProviderRepo;
 import com.wellsfargo.batch7.sbwibs.util.EMParser;
@@ -46,4 +47,8 @@ public class ServiceProviderServiceImpl implements ServiceProviderService {
 		return EMParser.parse(spRepo.save(serviceprovider));
 	}
 
+	@Override
+	public List<ServiceProviderModel> getAll() throws IBSException {
+		return spRepo.findAll().stream().map(e -> EMParser.parse(e)).collect(Collectors.toList());
+	}
 }

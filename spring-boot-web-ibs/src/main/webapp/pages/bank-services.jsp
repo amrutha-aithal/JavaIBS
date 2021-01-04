@@ -22,7 +22,6 @@
 			<div class="btn-lg btn-info">IBS offers easy fund transfer to their beneficiaries!!</div>
 				<br><br>
 			 <a href="/fundtransfer/newBeneficiary"><button type="button" class="btn-lg btn-success">Add Beneficiary</button></a> 
-			<%-- <a href="/fundTransfer/editBeneficiary"><button type="button" class="btn-lg btn-success">Modify Beneficiary</button></a>--%>
 			<a href="/fundtransfer/transferAmount"><button type="button" class="btn-lg btn-success">Transfer Amount</button></a> <br>
 			<br>
 		</div>

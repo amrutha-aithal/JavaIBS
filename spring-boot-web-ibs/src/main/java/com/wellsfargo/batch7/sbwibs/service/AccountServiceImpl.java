@@ -68,6 +68,7 @@ public class AccountServiceImpl implements AccountService {
 		return EMParser.parse(accountRepo.save(EMParser.parse(account)));
 
 	}
+
 	@Override
 	public List<AccountModel> getAllSavingsAccount(String currentUserName) throws IBSException {
 		IbsUserEntity user = userRepo.findByUserName(currentUserName);
@@ -80,6 +81,12 @@ public class AccountServiceImpl implements AccountService {
 		}
 		return accountRepo.findAllSavingsAccountByCustomer(customer.getUserId()).stream().map(e -> EMParser.parse(e))
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<AccountModel> getAllSavingsAccount() throws IBSException {
+
+		return accountRepo.findAll().stream().map(e -> EMParser.parse(e)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -107,7 +114,7 @@ public class AccountServiceImpl implements AccountService {
 		return accountRepo.findAllFixedDepositByCustomer(customer.getUserId()).stream().map(e -> EMParser.parse(e))
 				.collect(Collectors.toList());
 	}
-	
+
 	@Override
 	public AccountModel createRecurringDeposit(@Valid AccountModel account, String currentUserName) {
 		IbsUserEntity user = userRepo.findByUserName(currentUserName);
@@ -133,8 +140,9 @@ public class AccountServiceImpl implements AccountService {
 				.collect(Collectors.toList());
 	}
 
-	
-
-	
+	public Object getAllPayments(String currentUserName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

@@ -87,24 +87,11 @@
 					<form:errors path="address" />
 				</div>
 			</div>
-			<%-- <div class="form-control-group">
-					<form:label path="userName" class="form-control-label">User Name</form:label>
-					<form:input path="userName" class="form-control" type="text" />
-				</div>
-				<div class="form-control-group">
-					<form:label path="password" class="form-control-label">Password</form:label>
-					<form:input path="password" class="form-control" type="password" />
-				</div>
-				<div class="form-control-group">
-					<form:label path="confirmPassword" class="form-control-label">Confirm Password</form:label>
-					<form:input path="confirmPassword" class="form-control"
-						type="password" /> 
-				</div>--%>
 			<div class="form-group row" id="roleDiv">
 				<form:label path="role" class="col-sm-2 col-form-label">Role</form:label>
 				<div class="col-sm-3">
 					<form:select id="role" path="role" class="form-control">
-					<form:option value="--Select--">--Select--</form:option>
+						<form:option value="--Select--">--Select--</form:option>
 						<form:option value="USER">USER</form:option>
 						<form:option value="Service Provider">Service Provider</form:option>
 					</form:select>
@@ -127,24 +114,25 @@
 						"change",
 						function selectUser1() {
 							if ($('#role').val() == "Service Provider") {
-								if($('#myDiv1').length) {
+								if ($('#myDiv1').length) {
 									document.getElementById("myDiv1").remove();
-									}
+								}
 								var $newdiv1 = $('<div class="form-group row" id="myDiv1"><label for="accountNumber" class="col-sm-2 col-form-label">Account Number</label><div class="col-sm-3"><spring:bind path="accountNumber"><input name="accountNumber" class="form-control" type="text" /></spring:bind></div></div>');
 								var $newdiv2 = $('<div class="form-group row" id="myDiv3"><label for="ifscCode" class="col-sm-2 col-form-label">IFSC Code</label><div class="col-sm-3"><input name="ifscCode" class="form-control" type="text" /></div></div>');
 								$("#roleDiv").after($newdiv1, $newdiv2);
 								document.getElementById("signup").setAttribute(
 										"action", "/signup/serviceprovider");
-								document.getElementById("customerName").setAttribute(
-										"id", "spName");
-								document.getElementById("customerName").setAttribute(
-										"name", "spName");
-								
-							}if ($('#role').val() == "USER") {
-								if($('#myDiv1').length) {
+								document.getElementById("customerName")
+										.setAttribute("id", "spName");
+								document.getElementById("customerName")
+										.setAttribute("name", "spName");
+
+							}
+							if ($('#role').val() == "USER") {
+								if ($('#myDiv1').length) {
 									document.getElementById("myDiv1").remove();
 									document.getElementById("myDiv3").remove();
-									}
+								}
 								var $newdiv1 = $('<div class="form-group row" id="myDiv1"><label for="account.accountType" class="col-sm-2 col-form-label">Account Type</label><div class="col-sm-8"><spring:bind path="accountType"><input name="account.accountType" id="savings" class="form-input-check" type="checkbox" value="savings" checked/>Savings Account<br><input name="accountType" id="fixeddeposit" class="form-input-check" type="checkbox" value="fixeddeposit"/>Fixed Deposit<br><input name="accountType" id="recurringdeposit" class="form-input-check" type="checkbox" value="recurringdeposit"/>Recurring Deposit</spring:bind></div></div>');
 								$("#roleDiv").after($newdiv1);
 								document.getElementById("signup").setAttribute(
@@ -153,15 +141,15 @@
 										"id", "customerName");
 								document.getElementById("spName").setAttribute(
 										"name", "customerName");
-							}else {
+							} else {
 								document.getElementById("myDiv1").remove();
 								document.getElementById("myDiv3").remove();
-								document.getElementById("signup").setAttribute("action",
-										"/signup");
+								document.getElementById("signup").setAttribute(
+										"action", "/signup");
 
 							}
 						});
-		
+
 		function resetUser() {
 			document.getElementById("myDiv1").remove();
 			document.getElementById("myDiv3").remove();

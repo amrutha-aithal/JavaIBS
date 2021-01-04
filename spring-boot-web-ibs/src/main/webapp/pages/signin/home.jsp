@@ -35,7 +35,7 @@
             pay phone bills, electricity bills and lot more just in a click.To
             enjoy these features, please register by signing up. Already a
             customer, SignIn">Bill
-					Payments</button></a> <a href="/accounts"><button type="button"
+					Payments</button></a> <a href="/fundtransfer/transactionsList"><button type="button"
 					class="btn-lg btn-dark" data-toggle="tooltip" data-placement="left"
 					title="IBS offers bank statements -
             Monthly, Annual and Periodic.To enjoy these features, please register

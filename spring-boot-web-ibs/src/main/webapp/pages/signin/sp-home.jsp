@@ -14,7 +14,8 @@
 		<strong>WELCOME ${userName }</strong>
 	</h2>
 	<section class="container-fluid p-4">
-		<div class="jumbotron">
+		<div class="jumbotron" align="center">
+				<a href="/bankservices/statements"><button type="button" class="btn-lg btn-success">Statements</button></a> <br>
 		</div>
 	</section>
 </body>

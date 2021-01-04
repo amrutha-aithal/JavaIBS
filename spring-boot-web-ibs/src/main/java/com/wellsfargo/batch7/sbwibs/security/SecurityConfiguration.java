@@ -49,6 +49,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 		.antMatchers("/").permitAll();
+		
+		http.csrf().disable();
+		
 //		.antMatchers("/home").hasAnyAuthority("USER","ADMIN").antMatchers("/signin/home").hasAuthority("USER").anyRequest().authenticated();
 		
 //		http.formLogin().successHandler(successHandler).loginPage("/home").failureUrl("/signin?error=true").defaultSuccessUrl("/signin/home")

@@ -1,6 +1,5 @@
 package com.wellsfargo.batch7.sbwibs.entity;
 
-import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -33,7 +32,6 @@ public class FundTransferEntity {
 	
 	@OneToMany(mappedBy="beneficiary",cascade=CascadeType.ALL)
 	private Set<FundTransactionEntity> funds;
-	
 	
 	public FundTransferEntity() {
 		
@@ -89,10 +87,5 @@ public class FundTransferEntity {
 	}
 
 
-	
-
-	
-	
-	
 
 }

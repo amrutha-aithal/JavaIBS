@@ -27,18 +27,6 @@
 			<a href="/accounts/newRecurringDeposit"><button type="button" class="btn-lg btn-success">Recurring Deposit</button></a> <br>
 			<br>
 		</div>
-		<%-- <h4>Total Account Balance</h4>
-		<div class="col-sm-4">
-			<div class="form-control-group">
-				<label class="form-control-label">Account Number:</label> <label
-					class="form-control"> <%String accountNumber = "000123456789"; out.println("" + accountNumber); %>
-				</label>
-			</div>
-			<div class="form-control-group">
-				<label class="form-control-label">Amount:</label>
-				<label class="form-control"> <%double totalAmount = 700000;out.println("" + totalAmount);%></label>
-			</div>
-		</div> --%>
-	</section>
+		</section>
 </body>
 </html>

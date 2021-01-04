@@ -2,6 +2,7 @@ package com.wellsfargo.batch7.sbwibs.model;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -10,17 +11,18 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class FundTransferModel {
 	
-	@NotNull(message="Beneficiary Account Number is mandatory")	
+//	@NotNull(message="Beneficiary Account Number is mandatory")	
 	private Long beneficiaryAccNum;
 	
-	@NotNull(message="Beneficiary Name is mandatory")
-	@NotBlank(message="Beneficiary name can not be null")
+//	@NotNull(message="Beneficiary Name is mandatory")
+//	@NotBlank(message="Beneficiary name can not be null")
 	private String beneficiaryName;
 	
-	@NotNull(message="Bank IFSC Code is mandatory")
-	@NotBlank(message="Bank IFSC Code can not be null")
+//	@NotNull(message="Bank IFSC Code is mandatory")
+//	@NotBlank(message="Bank IFSC Code can not be null")
 	private String ifscCode;
 	
+	@DecimalMin(value="0.0")
 	private Double amtTransfer;
 	
 	@DateTimeFormat(iso=ISO.DATE)
@@ -28,6 +30,17 @@ public class FundTransferModel {
 
 	private AccountModel account;
 	
+	public ServiceProviderModel getServiceprovider() {
+		return serviceprovider;
+	}
+
+
+	public void setServiceprovider(ServiceProviderModel serviceprovider) {
+		this.serviceprovider = serviceprovider;
+	}
+
+
+	private ServiceProviderModel serviceprovider;
 	
 	public FundTransferModel() {
 		

@@ -22,6 +22,7 @@ public interface ServiceProviderRepo extends JpaRepository<ServiceProviderEntity
 
 	ServiceProviderEntity findByEmailId(String emailId);
 	Optional<ServiceProviderEntity> findByUserName(String userName);
+	Optional<ServiceProviderEntity> findByCustomerName(String customerName);
 
 }
 

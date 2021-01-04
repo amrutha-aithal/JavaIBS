@@ -28,9 +28,9 @@
 			<form:form
 				action="/fundtransfer/${isNew?'newBeneficiary':'update' } "
 				method="POST" modelAttribute="beneficiary" class="form">
-				<%-- <div class="form-control-group">
+				<div class="form-control-group">
 					<form:errors path="*"></form:errors>
-				</div>--%>
+				</div>
 				<%-- <div class="form-control-group">
 					<form:label path="account.accountNum" class="sr-only">Current User
 						Account:</form:label>

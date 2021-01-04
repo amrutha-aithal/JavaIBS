@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class ServiceProviderEntity extends IbsUserEntity {
 
+	
 	@Column(name = "spname", nullable = false)
 	private String customerName;
 
@@ -43,9 +44,20 @@ public class ServiceProviderEntity extends IbsUserEntity {
 
 	@Column(name = "ifscCode")
 	private String ifscCode;
+	
+	@OneToMany(mappedBy="serviceProvider",cascade=CascadeType.ALL)
+	private Set<FundTransactionEntity> funds;
 
 	public ServiceProviderEntity() {
 
+	}
+
+	public Set<FundTransactionEntity> getFunds() {
+		return funds;
+	}
+
+	public void setFunds(Set<FundTransactionEntity> funds) {
+		this.funds = funds;
 	}
 
 	public ServiceProviderEntity(String spName, String gender, LocalDate dateOfBirth, String phoneNumber,

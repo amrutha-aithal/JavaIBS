@@ -15,5 +15,6 @@ public interface AccountService {
 	List<AccountModel> getAllFixedDepositAccount(String currentUserName) throws IBSException;
 	List<AccountModel> getAllRecurringDepositAccount(String currentUserName)throws IBSException;
 	List<AccountModel> getAllSavingsAccount(String currentUserName) throws IBSException;
+	List<AccountModel> getAllSavingsAccount() throws IBSException;
 	
 }

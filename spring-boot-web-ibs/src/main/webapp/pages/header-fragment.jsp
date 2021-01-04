@@ -27,18 +27,6 @@
 		<span class="navbar-text" style="color: white"><%=date%></span>
 	</div>
 </nav>
-<!-- <script type="text/javascript">
-function updateClock() {
-    var now = new Date();
-    var time = now.getHours() + ':' + now.getMinutes() +':'+ now.getSeconds(), // again, you get the idea
-        date = [now.getDate(), now.getMonth() + 1, now.getFullYear()].join('-');
-    document.getElementById('date').innerHTML = [date, time].join(' ');
-    setInterval(updateClock,1000);
-}
-</script> -->
-
-
-
 
 
 

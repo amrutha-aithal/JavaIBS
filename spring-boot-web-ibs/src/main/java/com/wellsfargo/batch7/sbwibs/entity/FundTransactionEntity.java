@@ -34,7 +34,20 @@ public class FundTransactionEntity {
 	@JoinColumn(name="benefAccNum")
 	private FundTransferEntity beneficiary;
 	
+	@ManyToOne
+	@JoinColumn(name="funds")
+	private ServiceProviderEntity serviceProvider;
 	
+	public ServiceProviderEntity getServiceProvider() {
+		return serviceProvider;
+	}
+
+
+	public void setServiceProvider(ServiceProviderEntity serviceProvider) {
+		this.serviceProvider = serviceProvider;
+	}
+
+
 	public FundTransactionEntity() {
 		
 	}
